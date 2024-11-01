@@ -1,0 +1,88 @@
+@startuml
+class CelularVenda{
+  -quantidade : Integer
+}
+
+class Tela{
+  -tamanho : Float
+  -resolucao : Float
+}
+
+class Camera{
+  -resolucao : Float
+  -frontal : Boolean 
+}
+
+class PortaSlot{
+  -tipo : String
+  -quantidade : int
+}
+
+Class Sensor{
+  -tipo : String
+}
+
+class Processador{
+  -marca : String 
+  -modelo : String
+}
+
+class Linha{
+  -marca : String
+  -anoLancamento : Date
+}
+
+class Celular{
+  -marca : String
+  -nome : String
+  -anoLancamento : date
+  -armazenamento : Float
+  -ram : Float
+  -preco : Float
+}
+
+class Serie{
+  -nome : String
+  -anoLancamento : date
+}
+
+class Venda{
+  -ValorFinal : Float 
+  -DataVenda : DateTime
+}
+
+class Usuario{
+  -login : String
+  -Senha : String
+}
+
+class Cliente{
+  -nome : String
+  -cep : String
+  -cpf : String
+}
+
+class Funcionario{
+  -codigoFuncionario : String
+  -nome : String
+}
+
+class Pessoa{
+    -cpf : String
+    -nome : String
+    -numer : String
+}
+
+Celular "*" o--> "1" Tela
+Celular "*" --> "*" Sensor
+Celular "*" --> "*" PortaSlot
+Celular "*" o--> "*" Camera
+Celular "*" o--> "1" Processador
+CelularVenda "1" o--> "1" Celular
+Celular "*" --> "1"Serie
+Serie "*" --> "1" Linha
+Venda "1" o--> "*" CelularVenda
+Venda "*" o-left-> "1" Cliente
+Cliente "1" o-left-> "1" Usuario
+Funcionario "1" o-up-> "1" Usuario
+@enduml
