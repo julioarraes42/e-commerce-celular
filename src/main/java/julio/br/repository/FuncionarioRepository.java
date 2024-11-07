@@ -19,4 +19,8 @@ public class FuncionarioRepository implements PanacheRepository<Funcionario> {
         return find("UPPER(nome) LIKE ?1", nome.toUpperCase() + "%");
     }
 
+    public PanacheQuery<Funcionario> findAllPaginado() {
+        return findAll();
+    }
+
 }

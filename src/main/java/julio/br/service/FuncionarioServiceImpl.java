@@ -75,7 +75,7 @@ public class FuncionarioServiceImpl implements FuncionarioService {
     @Override
     public List<FuncionarioResponseDTO> findAll(int page, int pageSize) {
         List<Funcionario> funcionarios = funcionarioRepository
-                .findAll()
+                .findAllPaginado()
                 .page(page, pageSize)
                 .list();
 
