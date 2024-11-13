@@ -19,7 +19,8 @@ public record CelularResponseDTO(
                 Float armazenamento,
                 Float ram,
                 Float preco,
-                int estoque) {
+                int estoque,
+                String nomeImagem) {
         public static CelularResponseDTO valuesOff(Celular celular) {
                 List<CameraResponseDTO> listaCameras = celular.getCamera().stream().map(CameraResponseDTO::valuesOff)
                                 .toList();
@@ -42,6 +43,7 @@ public record CelularResponseDTO(
                                 celular.getArmazenamento(),
                                 celular.getRam(),
                                 celular.getPreco(),
-                                celular.getEstoque());
+                                celular.getEstoque(),
+                                celular.getNomeImagem());
         }
 }
