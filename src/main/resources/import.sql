@@ -26,8 +26,8 @@ INSERT INTO Serie (nome, anoLancamento, linha_id) VALUES ('Série X', '2021-03-2
 INSERT INTO Serie (nome, anoLancamento, linha_id) VALUES ('Série Y', '2019-09-10', 2);
 INSERT INTO Serie (nome, anoLancamento, linha_id) VALUES ('Série Z', '2020-11-25', 3);
 
-INSERT INTO Celular (estoque, marca, nome, anoLancamento, armazenamento, ram, preco, id_tela, id_processador, id_serie) VALUES
-(0, 'Samsung', 'peperone', '2020-11-02', 128, 8, 999.99, 1, 1, 1);
+INSERT INTO Celular (estoque, marca, nome, anoLancamento, armazenamento, ram, preco, nomeimagem, id_tela, id_processador, id_serie) VALUES
+(0, 'Samsung', 'peperone', '2020-11-02', 128, 8, 999.99, '01412e6e-2e20-4b90-b855-ece8f21dc05e.jpeg', 1, 1, 1);
 INSERT INTO Celular (estoque, marca, nome, anoLancamento, armazenamento, ram, preco, id_tela, id_processador, id_serie) VALUES
 (10, 'Apple', 'iPhone 12', '2020-10-23', 256, 6, 1099.99, 2, 2, 2);
 INSERT INTO Celular (estoque, marca, nome, anoLancamento, armazenamento, ram, preco, id_tela, id_processador, id_serie) VALUES

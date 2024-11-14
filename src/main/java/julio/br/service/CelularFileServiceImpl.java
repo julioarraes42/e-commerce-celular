@@ -8,16 +8,17 @@ import java.nio.file.Files;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
-
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import julio.br.model.Celular;
 import julio.br.repository.CelularRepository;
 import julio.br.validation.ValidationException;
+import org.apache.tika.Tika;
 
 @ApplicationScoped
 public class CelularFileServiceImpl implements FileService {
+
     private final String PATH_USER = System.getProperty("user.home")
             + File.separator + ".quarkus"
             + File.separator + "imagens"
@@ -38,9 +39,10 @@ public class CelularFileServiceImpl implements FileService {
     }
 
     private String salvarImagem(String nomeImagem, byte[] imagem) throws IOException {
-        String mimeType = Files.probeContentType(new File(nomeImagem).toPath());
-        List<String> listMimeType = Arrays.asList("image/jpg", "image/gif", "image/png", "image/jpeg");
-        if (!listMimeType.contains(mimeType))
+        Tika tika = new Tika();
+        String mimeType = tika.detect(imagem);
+        List<String> listMimeType = Arrays.asList("image/jpg", "image/gif", "image/png", "image/jpeg", "image/jfif");
+        if (mimeType == null || !listMimeType.contains(mimeType))
             throw new IOException("imagem não suportado.");
 
         if (imagem.length > 1024 * 1024 * 10) {
