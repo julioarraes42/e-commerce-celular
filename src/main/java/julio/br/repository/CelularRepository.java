@@ -29,6 +29,10 @@ public class CelularRepository implements PanacheRepository<Celular> {
         return find("UPPER(nome) LIKE ?1", nome.toUpperCase() + "%");
     }
 
+    // public PanacheQuery<Celular> findAllPaginado() {
+    //     return findAll();
+    // }
+
     public Celular findByNomeCompleto(String nome) {
         return find("UPPER(nome) = ?1", nome.toUpperCase()).firstResult();
     }

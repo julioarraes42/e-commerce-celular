@@ -15,4 +15,8 @@ public class TelaRepository implements PanacheRepository<Tela> {
         return find("tamanho = ?1", tamanho);
     }
 
+    // public PanacheQuery<Tela> findAllPaginado() {
+    //     return findAll();
+    // }
+
 }

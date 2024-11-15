@@ -14,4 +14,8 @@ public class ProcessadorRepository implements PanacheRepository<Processador> {
         }
         return find("UPPER(marca) LIKE ?1", marca.toUpperCase() + "%");
     }
+
+    // public PanacheQuery<Processador> findAllPaginado() {
+    //     return findAll();
+    // }
 }
