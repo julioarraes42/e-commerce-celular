@@ -2,7 +2,7 @@ package julio.br.resource;
 
 import org.jboss.logging.Logger;
 
-import jakarta.annotation.security.RolesAllowed;
+// import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.Consumes;
@@ -31,9 +31,22 @@ public class ClienteResource {
     private static final Logger LOG = Logger.getLogger(ClienteResource.class);
 
     @GET
-    public Response findAll() {
+    public Response findAll(
+            @PathParam("page") int page,
+            @PathParam("pageSize") int pageSize
+    ) {
         LOG.info("Procurando todos os clientes");
-        return Response.ok(clienteService.findAll()).build();
+        return Response.ok(clienteService.findAll(page, pageSize)).build();
+    }
+
+    @GET
+    public Response findByNome(
+            @PathParam("nome") String nome,
+            @PathParam("page") int page,
+            @PathParam("pageSize") int pageSize
+    ) {
+        LOG.info("Procurando cliente por nome");
+        return Response.ok(clienteService.findByNome(nome, page, pageSize)).build();
     }
 
     @POST

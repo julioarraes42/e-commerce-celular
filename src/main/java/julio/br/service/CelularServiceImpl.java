@@ -133,10 +133,41 @@ public class CelularServiceImpl implements CelularService {
     }
 
     @Override
-    public List<CelularResponseDTO> findAll() {
-        return celularRepository.listAll()
+    public List<CelularResponseDTO> findAll(int page, int pageSize) {
+        List<Celular> celulares = celularRepository
+                .findAll()
+                .page(page, pageSize)
+                .list();
+        
+        return celulares
                 .stream()
                 .map(CelularResponseDTO::valuesOff)
+                .toList();
+    }
+
+    @Override
+    public List<CelularResponseDTO> findByNome(String nome, int page, int pageSize) {
+        List<Celular> celulares = celularRepository
+                .findByNome(nome)
+                .page(page, pageSize)
+                .list();
+        
+        return celulares
+                .stream()
+                .map(e -> CelularResponseDTO.valuesOff(e))
+                .toList();
+    }
+
+    @Override
+    public List<CelularResponseDTO> findByMarca(String marca, int page, int pageSize) {
+        List<Celular> celulares = celularRepository
+                .findByMarca(marca)
+                .page(page, pageSize)
+                .list();
+        
+        return celulares
+                .stream()
+                .map(e -> CelularResponseDTO.valuesOff(e))
                 .toList();
     }
 
@@ -267,4 +298,5 @@ public class CelularServiceImpl implements CelularService {
         Celular celular = celularRepository.findById(id);
         celular.setEstoque(celularRepository.findById(id).getEstoque() - quantidade);
     }
+
 }

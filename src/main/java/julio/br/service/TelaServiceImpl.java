@@ -9,7 +9,6 @@ import julio.br.dto.TelaDTO;
 import julio.br.dto.TelaResponseDTO;
 import julio.br.model.Celular;
 import julio.br.model.Tela;
-import julio.br.model.Tela;
 import julio.br.repository.CelularRepository;
 import julio.br.repository.TelaRepository;
 
@@ -23,9 +22,26 @@ public class TelaServiceImpl implements TelaService {
     public CelularRepository celularRepository;
 
     @Override
-    public List<TelaResponseDTO> findAll() {
-        return telaRepository
-                .listAll()
+    public List<TelaResponseDTO> findAll(int page, int pageSize) {
+        List<Tela> telas = telaRepository
+                            .findAll()
+                            .page(page, pageSize)
+                            .list();
+        
+        return telas
+                .stream()
+                .map(e -> TelaResponseDTO.valuesOf(e))
+                .toList();
+    }
+
+    @Override
+    public List<TelaResponseDTO> findByTamanho(Float tamanho, int page, int pageSize) {
+        List<Tela> telas = telaRepository
+                            .findByTamanho(tamanho)
+                            .page(page, pageSize)
+                            .list();
+        
+        return telas
                 .stream()
                 .map(e -> TelaResponseDTO.valuesOf(e))
                 .toList();

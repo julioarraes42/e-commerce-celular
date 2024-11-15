@@ -9,7 +9,11 @@ import julio.br.dto.CelularResponseDTO;
 
 public interface CelularService {
 
-    public List<CelularResponseDTO> findAll();
+    public List<CelularResponseDTO> findAll(int page, int pageSize);
+
+    public List<CelularResponseDTO> findByNome(String nome, int page, int pageSize);
+
+    public List<CelularResponseDTO> findByMarca(String marca, int page, int pageSize);
 
     public CelularResponseDTO create(@Valid CelularDTO dto);
 

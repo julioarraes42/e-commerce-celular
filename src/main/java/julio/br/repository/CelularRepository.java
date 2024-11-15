@@ -3,6 +3,7 @@ package julio.br.repository;
 import java.time.LocalDate;
 import java.util.List;
 
+import io.quarkus.hibernate.orm.panache.PanacheQuery;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import julio.br.model.Camera;
@@ -14,12 +15,18 @@ import julio.br.model.Tela;
 @ApplicationScoped
 public class CelularRepository implements PanacheRepository<Celular> {
 
-    public List<Celular> findByMarca(String marca) {
-        return find("UPPER(marca) LIKE ?1", "%" + marca.toUpperCase() + "%").list();
+    public PanacheQuery<Celular> findByMarca(String marca) {
+        if (marca == null) {
+            return null;
+        }
+        return find("UPPER(marca) LIKE ?1", marca.toUpperCase() + "%");
     }
 
-    public List<Celular> findByNome(String nome) {
-        return find("UPPER(nome) LIKE ?1", "%" + nome.toUpperCase() + "%").list();
+    public PanacheQuery<Celular> findByNome(String nome) {
+        if (nome == null) {
+            return null;
+        }
+        return find("UPPER(nome) LIKE ?1", nome.toUpperCase() + "%");
     }
 
     public Celular findByNomeCompleto(String nome) {

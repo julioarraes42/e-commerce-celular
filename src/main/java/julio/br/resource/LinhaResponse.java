@@ -1,6 +1,6 @@
 package julio.br.resource;
 
-import jakarta.annotation.security.RolesAllowed;
+// import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
@@ -19,7 +19,7 @@ public class LinhaResponse {
     public LinhaService linhaService;
 
     @GET
-    @RolesAllowed("Funcionario")
+    // @RolesAllowed("Funcionario")
     public Response findAll() {
         return Response.ok(linhaService.findAll()).build();
     }

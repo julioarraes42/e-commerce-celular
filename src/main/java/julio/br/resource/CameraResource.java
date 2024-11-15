@@ -2,7 +2,7 @@ package julio.br.resource;
 
 import org.jboss.logging.Logger;
 
-import jakarta.annotation.security.RolesAllowed;
+// import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.Consumes;
@@ -17,7 +17,6 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.Response.Status;
 import julio.br.dto.CameraDTO;
-import julio.br.dto.ClienteDTO;
 import julio.br.service.CameraService;
 
 @Produces(MediaType.APPLICATION_JSON)

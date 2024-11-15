@@ -1,6 +1,6 @@
 package julio.br.resource;
 
-import jakarta.annotation.security.RolesAllowed;
+// import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.Consumes;
@@ -26,20 +26,20 @@ public class SensorResource {
     public SensorService sensorService;
 
     @GET
-    @RolesAllowed("Funcionario")
+    // @RolesAllowed("Funcionario")
     public Response findAll() {
         return Response.ok(sensorService.findAll()).build();
     }
 
     @POST
-    @RolesAllowed("Funcionario")
+    // @RolesAllowed("Funcionario")
     @Transactional
     public Response create(SensorDTO dto) {
         return Response.status(Status.CREATED).entity(sensorService.create(dto)).build();
     }
 
     @PUT
-    @RolesAllowed("Funcionario")
+    // @RolesAllowed("Funcionario")
     @Transactional
     @Path("/{id}")
     public Response update(SensorDTO dto, @PathParam("id") Long id) {
@@ -48,7 +48,7 @@ public class SensorResource {
     }
 
     @DELETE
-    @RolesAllowed("Funcionario")
+    // @RolesAllowed("Funcionario")
     @Transactional
     @Path("/{id}")
     public Response delet(@PathParam("id") Long id) {

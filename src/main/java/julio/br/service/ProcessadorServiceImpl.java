@@ -4,7 +4,6 @@ import java.util.List;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
-import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import julio.br.dto.ProcessadorDTO;
 import julio.br.dto.ProcessadorResponseDTO;
@@ -23,9 +22,26 @@ public class ProcessadorServiceImpl implements ProcessadorService {
     public CelularRepository celularRepository;
 
     @Override
-    public List<ProcessadorResponseDTO> findAll() {
-        return processadorRepository
-                .findAll()
+    public List<ProcessadorResponseDTO> findAll(int page, int pageSize) {
+        List<Processador> processadores = processadorRepository
+                                                    .findAll()
+                                                    .page(page, pageSize)
+                                                    .list();
+
+        return processadores
+                .stream()
+                .map(e -> ProcessadorResponseDTO.valuesOf(e))
+                .toList();
+    }
+
+    @Override
+    public List<ProcessadorResponseDTO> findByMarca(String marca, int page, int pageSize) {
+        List<Processador> processadores = processadorRepository
+                .findByMarca(marca)
+                .page(page, pageSize)
+                .list();
+
+        return processadores
                 .stream()
                 .map(e -> ProcessadorResponseDTO.valuesOf(e))
                 .toList();

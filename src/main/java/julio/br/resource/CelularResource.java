@@ -5,7 +5,7 @@ import java.time.format.DateTimeFormatter;
 
 import org.jboss.resteasy.annotations.providers.multipart.MultipartForm;
 
-import jakarta.annotation.security.RolesAllowed;
+// import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.Consumes;
@@ -38,8 +38,29 @@ public class CelularResource {
     public CelularFileServiceImpl fileService;
 
     @GET
-    public Response findAll() {
-        return Response.ok(celularService.findAll()).build();
+    public Response findAll(
+        @PathParam("page") int page,
+        @PathParam("pageSize") int pageSize
+    ) {
+        return Response.ok(celularService.findAll(page, pageSize)).build();
+    }
+
+    @GET
+    public Response findByMarca(
+        @PathParam("marca") String marca,
+        @PathParam("page") int page,
+        @PathParam("pageSize") int pageSize
+    ) {
+        return Response.ok(celularService.findByMarca(marca, page, pageSize)).build();
+    }
+
+    @GET
+    public Response findByNome(
+        @PathParam("nome") String nome,
+        @PathParam("page") int page,
+        @PathParam("pageSize") int pageSize
+    ) {
+        return Response.ok(celularService.findByNome(nome, page, pageSize)).build();
     }
 
     @GET

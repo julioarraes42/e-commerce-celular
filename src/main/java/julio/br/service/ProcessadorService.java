@@ -6,7 +6,9 @@ import julio.br.dto.ProcessadorDTO;
 import julio.br.dto.ProcessadorResponseDTO;
 
 public interface ProcessadorService {
-    public List<ProcessadorResponseDTO> findAll();
+    public List<ProcessadorResponseDTO> findAll(int page, int pageSize);
+
+    public List<ProcessadorResponseDTO> findByMarca(String marca, int page, int pageSize);
 
     public ProcessadorResponseDTO create(ProcessadorDTO dto);
 

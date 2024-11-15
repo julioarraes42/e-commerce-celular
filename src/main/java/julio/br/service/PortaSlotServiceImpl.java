@@ -9,7 +9,6 @@ import julio.br.dto.PortaSlotDTO;
 import julio.br.dto.PortaSlotResponseDTO;
 import julio.br.model.PortaSlot;
 import julio.br.model.Celular;
-import julio.br.model.PortaSlot;
 import julio.br.repository.CelularRepository;
 import julio.br.repository.PortaSlotRepository;
 

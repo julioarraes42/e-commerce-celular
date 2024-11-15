@@ -7,7 +7,9 @@ import julio.br.dto.TelaResponseDTO;
 
 public interface TelaService {
 
-    public List<TelaResponseDTO> findAll();
+    public List<TelaResponseDTO> findAll(int page, int pageSize);
+
+    public List<TelaResponseDTO> findByTamanho(Float tamanho, int page, int pageSize);
 
     public TelaResponseDTO create(TelaDTO dto);
 
