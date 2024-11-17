@@ -39,27 +39,30 @@ public class CelularResource {
 
     @GET
     public Response findAll(
-        @PathParam("page") int page,
-        @PathParam("pageSize") int pageSize
-    ) {
+            @PathParam("page") int page,
+            @PathParam("pageSize") int pageSize) {
         return Response.ok(celularService.findAll(page, pageSize)).build();
     }
 
     @GET
+    @Path("/{id}")
+    public Response findById(@PathParam("id") Long id) {
+        return Response.ok(celularService.findById(id)).build();
+    }
+
+    @GET
     public Response findByMarca(
-        @PathParam("marca") String marca,
-        @PathParam("page") int page,
-        @PathParam("pageSize") int pageSize
-    ) {
+            @PathParam("marca") String marca,
+            @PathParam("page") int page,
+            @PathParam("pageSize") int pageSize) {
         return Response.ok(celularService.findByMarca(marca, page, pageSize)).build();
     }
 
     @GET
     public Response findByNome(
-        @PathParam("nome") String nome,
-        @PathParam("page") int page,
-        @PathParam("pageSize") int pageSize
-    ) {
+            @PathParam("nome") String nome,
+            @PathParam("page") int page,
+            @PathParam("pageSize") int pageSize) {
         return Response.ok(celularService.findByNome(nome, page, pageSize)).build();
     }
 

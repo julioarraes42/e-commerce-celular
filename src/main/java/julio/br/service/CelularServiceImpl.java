@@ -138,7 +138,7 @@ public class CelularServiceImpl implements CelularService {
                 .findAll()
                 .page(page, pageSize)
                 .list();
-        
+
         return celulares
                 .stream()
                 .map(CelularResponseDTO::valuesOff)
@@ -151,7 +151,7 @@ public class CelularServiceImpl implements CelularService {
                 .findByNome(nome)
                 .page(page, pageSize)
                 .list();
-        
+
         return celulares
                 .stream()
                 .map(e -> CelularResponseDTO.valuesOff(e))
@@ -164,7 +164,7 @@ public class CelularServiceImpl implements CelularService {
                 .findByMarca(marca)
                 .page(page, pageSize)
                 .list();
-        
+
         return celulares
                 .stream()
                 .map(e -> CelularResponseDTO.valuesOff(e))
@@ -297,6 +297,12 @@ public class CelularServiceImpl implements CelularService {
     public void diminuirEstoque(Long id, int quantidade) {
         Celular celular = celularRepository.findById(id);
         celular.setEstoque(celularRepository.findById(id).getEstoque() - quantidade);
+    }
+
+    @Override
+    public CelularResponseDTO findById(Long id) {
+        Celular celular = celularRepository.findById(id);
+        return CelularResponseDTO.valuesOff(celular);
     }
 
 }

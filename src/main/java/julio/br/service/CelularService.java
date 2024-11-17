@@ -11,6 +11,8 @@ public interface CelularService {
 
     public List<CelularResponseDTO> findAll(int page, int pageSize);
 
+    public CelularResponseDTO findById(Long id);
+
     public List<CelularResponseDTO> findByNome(String nome, int page, int pageSize);
 
     public List<CelularResponseDTO> findByMarca(String marca, int page, int pageSize);
