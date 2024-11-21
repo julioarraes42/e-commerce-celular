@@ -28,6 +28,7 @@ import julio.br.repository.SensorRepository;
 import julio.br.repository.SerieRepository;
 import julio.br.repository.TelaRepository;
 import julio.br.validation.ValidationException;
+import io.quarkus.panache.common.Page;
 
 @ApplicationScoped
 public class CelularServiceImpl implements CelularService {
@@ -134,27 +135,35 @@ public class CelularServiceImpl implements CelularService {
 
     @Override
     public List<CelularResponseDTO> findAll(int page, int pageSize) {
+        if (pageSize <= 0) {
+            throw new IllegalArgumentException("Page size must be greater than 0");
+        }
+    
         List<Celular> celulares = celularRepository
                 .findAll()
-                .page(page, pageSize)
+                .page(Page.of(page, pageSize))
                 .list();
-
+    
         return celulares
                 .stream()
                 .map(CelularResponseDTO::valuesOff)
                 .toList();
     }
-
+    
     @Override
     public List<CelularResponseDTO> findByNome(String nome, int page, int pageSize) {
+        if (pageSize <= 0) {
+            throw new IllegalArgumentException("Page size must be greater than 0");
+        }
+    
         List<Celular> celulares = celularRepository
                 .findByNome(nome)
-                .page(page, pageSize)
+                .page(Page.of(page, pageSize))
                 .list();
-
+    
         return celulares
                 .stream()
-                .map(e -> CelularResponseDTO.valuesOff(e))
+                .map(CelularResponseDTO::valuesOff)
                 .toList();
     }
 
