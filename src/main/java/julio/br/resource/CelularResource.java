@@ -42,6 +42,11 @@ public class CelularResource {
     public Response findAll(
             @PathParam("page") @DefaultValue("0") int page,
             @PathParam("pageSize") @DefaultValue("100") int pageSize) {
+                if (pageSize <= 0) {
+                    return Response.status(Response.Status.BAD_REQUEST)
+                            .entity("Page size must be greater than 0")
+                            .build();
+                }
         return Response.ok(celularService.findAll(page, pageSize)).build();
     }
 
