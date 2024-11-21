@@ -6,7 +6,7 @@ import julio.br.dto.PortaSlotDTO;
 import julio.br.dto.PortaSlotResponseDTO;
 
 public interface PortaSlotService {
-    public List<PortaSlotResponseDTO> findAll();
+    public List<PortaSlotResponseDTO> findAll(int page, int pageSize);
 
     public PortaSlotResponseDTO create(PortaSlotDTO dto);
 

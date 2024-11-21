@@ -23,10 +23,13 @@ public class CameraServiceImpl implements CameraService {
     public CelularRepository celularRepository;
 
     @Override
-    public List<CameraResponseDTO> findAll() {
+    public List<CameraResponseDTO> findAll(int page, int pageSize) {
+        List<Camera> cameras = cameraRepository
+                .findAll()
+                .page(page, pageSize)
+                .list();
 
-        return cameraRepository
-                .listAll()
+        return cameras
                 .stream()
                 .map(e -> CameraResponseDTO.valuesOff(e))
                 .toList();

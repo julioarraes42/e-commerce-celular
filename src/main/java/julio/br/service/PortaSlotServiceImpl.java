@@ -22,9 +22,14 @@ public class PortaSlotServiceImpl implements PortaSlotService {
     public CelularRepository celularRepository;
 
     @Override
-    public List<PortaSlotResponseDTO> findAll() {
-        return portaSlotRepository
-                .listAll()
+    public List<PortaSlotResponseDTO> findAll(int page, int pageSize) {
+                List<PortaSlot> portas = portaSlotRepository
+                            .findAll()
+                            .page(page, pageSize)
+                            .list();
+        
+        
+        return portas
                 .stream()
                 .map(e -> PortaSlotResponseDTO.valuesOf(e))
                 .toList();

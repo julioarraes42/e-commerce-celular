@@ -8,7 +8,7 @@ import julio.br.dto.CameraResponseDTO;
 
 public interface CameraService {
 
-    public List<CameraResponseDTO> findAll();
+    public List<CameraResponseDTO> findAll(int page, int pageSize);
 
     public CameraResponseDTO create(@Valid CameraDTO dto);
 
