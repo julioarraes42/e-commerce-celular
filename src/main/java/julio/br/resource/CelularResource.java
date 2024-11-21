@@ -10,6 +10,7 @@ import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
+import jakarta.ws.rs.DefaultValue;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.PATCH;
 import jakarta.ws.rs.POST;
@@ -39,8 +40,8 @@ public class CelularResource {
 
     @GET
     public Response findAll(
-            @PathParam("page") int page,
-            @PathParam("pageSize") int pageSize) {
+            @PathParam("page") @DefaultValue("0") int page,
+            @PathParam("pageSize") @DefaultValue("100") int pageSize) {
         return Response.ok(celularService.findAll(page, pageSize)).build();
     }
 
