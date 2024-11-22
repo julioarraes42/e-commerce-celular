@@ -59,16 +59,16 @@ public class CelularResource {
     @GET
     public Response findByMarca(
             @PathParam("marca") String marca,
-            @PathParam("page") int page,
-            @PathParam("pageSize") int pageSize) {
+            @PathParam("page") @DefaultValue("0") int page,
+            @PathParam("pageSize") @DefaultValue("100") int pageSize) {
         return Response.ok(celularService.findByMarca(marca, page, pageSize)).build();
     }
 
     @GET
     public Response findByNome(
             @PathParam("nome") String nome,
-            @PathParam("page") int page,
-            @PathParam("pageSize") int pageSize) {
+            @PathParam("page") @DefaultValue("0") int page,
+            @PathParam("pageSize") @DefaultValue("100") int pageSize) {
         return Response.ok(celularService.findByNome(nome, page, pageSize)).build();
     }
 
