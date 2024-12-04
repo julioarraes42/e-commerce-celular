@@ -8,7 +8,14 @@ INSERT INTO sensor (tipo) VALUES ('ifravermelho');
 
 INSERT INTO processador (marca, modelo) VALUES ('INTEL', 'CORE');
 INSERT INTO processador (marca, modelo) VALUES ('nvidea', 'gtx');
-INSERT INTO processador (marca, modelo) VALUES ('verttapen', 'f1');
+INSERT INTO processador (marca, modelo) VALUES ('Verstappen', 'f1');
+INSERT INTO processador (marca, modelo) VALUES ('Max', 'f5');
+INSERT INTO processador (marca, modelo) VALUES ('Amr', 'razer');
+INSERT INTO processador (marca, modelo) VALUES ('Kilan', 'octar');
+INSERT INTO processador (marca, modelo) VALUES ('Speed', 'racer');
+INSERT INTO processador (marca, modelo) VALUES ('Mclarem', 'nascar');
+INSERT INTO processador (marca, modelo) VALUES ('RedBull', 'Asas');
+INSERT INTO processador (marca, modelo) VALUES ('Acer', 'nitro');
 
 INSERT INTO Linha (nome, anoLancamento) VALUES ('Linha A', '2020-01-01');
 INSERT INTO Linha (nome, anoLancamento) VALUES ('Linha B', '2018-05-15');
@@ -17,10 +24,26 @@ INSERT INTO Linha (nome, anoLancamento) VALUES ('Linha C', '2019-11-30');
 INSERT INTO Camera (resolucao, frontal) VALUES (12.0, true);
 INSERT INTO Camera (resolucao, frontal) VALUES (16.0, false);
 INSERT INTO Camera (resolucao, frontal) VALUES (8.0, true);
+INSERT INTO Camera (resolucao, frontal) VALUES (9.0, true);
+INSERT INTO Camera (resolucao, frontal) VALUES (15.0, false);
+INSERT INTO Camera (resolucao, frontal) VALUES (21.0, true);
+INSERT INTO Camera (resolucao, frontal) VALUES (3.0, false);
+INSERT INTO Camera (resolucao, frontal) VALUES (14.0, true);
+INSERT INTO Camera (resolucao, frontal) VALUES (6.0, true);
+INSERT INTO Camera (resolucao, frontal) VALUES (7.0, false);
+INSERT INTO Camera (resolucao, frontal) VALUES (8.5, true);
 
 INSERT INTO Tela (tamanho, resolucao) VALUES (5.5, 1920);
 INSERT INTO Tela (tamanho, resolucao) VALUES (6.1, 2560);
 INSERT INTO Tela (tamanho, resolucao) VALUES (6.5, 2400);
+INSERT INTO Tela (tamanho, resolucao) VALUES (6.0, 2910);
+INSERT INTO Tela (tamanho, resolucao) VALUES (2.8, 3040);
+INSERT INTO Tela (tamanho, resolucao) VALUES (10.9, 500);
+INSERT INTO Tela (tamanho, resolucao) VALUES (18.8, 560);
+INSERT INTO Tela (tamanho, resolucao) VALUES (19.3, 5070);
+INSERT INTO Tela (tamanho, resolucao) VALUES (27.9, 1950);
+INSERT INTO Tela (tamanho, resolucao) VALUES (24.1, 2750);
+INSERT INTO Tela (tamanho, resolucao) VALUES (17.3, 1860);
 
 INSERT INTO Serie (nome, anoLancamento, linha_id) VALUES ('Série X', '2021-03-20', 1);
 INSERT INTO Serie (nome, anoLancamento, linha_id) VALUES ('Série Y', '2019-09-10', 2);
