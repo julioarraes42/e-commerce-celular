@@ -24,4 +24,11 @@ public class SerieResource {
         return Response.ok(serieService.findAll()).build();
     }
 
+    @GET
+    @Path("/count")
+    // @RolesAllowed("Funcionario")
+    public Response count() {
+        return Response.ok(serieService.count()).build();
+    }
+
 }

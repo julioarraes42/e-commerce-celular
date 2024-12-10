@@ -73,6 +73,12 @@ public class CelularResource {
     }
 
     @GET
+    @Path("/count")
+    public Response count() {
+        return Response.ok(celularService.count()).build();
+    }
+
+    @GET
     @Path("/busca/marca/{marca}")
     public Response findByMarca(@PathParam("marca") String marca) {
         return Response.ok(celularService.findByMarca(marca)).build();

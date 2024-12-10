@@ -36,6 +36,11 @@ public class PortaSlotServiceImpl implements PortaSlotService {
     }
 
     @Override
+    public Long count() {
+        return portaSlotRepository.count();
+    }
+
+    @Override
     @Transactional
     public PortaSlotResponseDTO create(PortaSlotDTO dto) {
         PortaSlot portaSlot = new PortaSlot();

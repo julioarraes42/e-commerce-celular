@@ -44,6 +44,18 @@ public class TelaResource {
         return Response.ok(telaService.findByTamanho(tamanho, page, pageSize)).build();
     }
 
+    @GET
+    @Path("/count")
+    public Response count() {
+        return Response.ok(telaService.count()).build();
+    }
+
+    @GET
+    @Path("/{id}")
+    public Response findById(@PathParam("id") Long id) {
+        return Response.ok(telaService.findById(id)).build();
+    }
+
     @POST
     @Transactional
     public Response create(TelaDTO dto) {

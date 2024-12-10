@@ -8,4 +8,6 @@ public interface LinhaService {
 
     public List<LinhaResponseDTO> findAll();
 
+    public Long count();
+
 }

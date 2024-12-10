@@ -8,7 +8,11 @@ import julio.br.dto.ProcessadorResponseDTO;
 public interface ProcessadorService {
     public List<ProcessadorResponseDTO> findAll(int page, int pageSize);
 
+    public ProcessadorResponseDTO findById(Long id);
+
     public List<ProcessadorResponseDTO> findByMarca(String marca, int page, int pageSize);
+
+    public Long count();
 
     public ProcessadorResponseDTO create(ProcessadorDTO dto);
 

@@ -29,6 +29,8 @@ public interface ClienteService {
 
     public List<ClienteResponseDTO> findByNome(String nome, int page, int pageSize);
 
+    public Long count();
+
     public UsuarioResponseDTO login(AutorizacaoUsuarioDTO dto);
 
     public Cliente dadosCliente();

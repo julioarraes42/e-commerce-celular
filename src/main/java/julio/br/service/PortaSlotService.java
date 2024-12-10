@@ -8,6 +8,8 @@ import julio.br.dto.PortaSlotResponseDTO;
 public interface PortaSlotService {
     public List<PortaSlotResponseDTO> findAll(int page, int pageSize);
 
+    public Long count();
+
     public PortaSlotResponseDTO create(PortaSlotDTO dto);
 
     public void update(Long id, PortaSlotDTO dto);

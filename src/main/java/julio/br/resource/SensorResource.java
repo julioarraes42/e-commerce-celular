@@ -31,6 +31,13 @@ public class SensorResource {
         return Response.ok(sensorService.findAll()).build();
     }
 
+    @GET
+    @Path("/count")
+    // @RolesAllowed("Funcionario")
+    public Response count() {
+        return Response.ok(sensorService.count()).build();
+    }
+
     @POST
     // @RolesAllowed("Funcionario")
     @Transactional

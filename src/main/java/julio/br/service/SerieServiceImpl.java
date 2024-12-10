@@ -22,4 +22,9 @@ public class SerieServiceImpl implements SerieService {
                 .toList();
     }
 
+    @Override
+    public Long count() {
+        return serieRepository.count();
+    }
+
 }

@@ -9,6 +9,8 @@ public interface SensorService {
 
     public List<SensorResponseDTO> findAll();
 
+    public Long count();
+
     public SensorResponseDTO create(SensorDTO dto);
 
     public void update(Long id, SensorDTO dto);

@@ -22,4 +22,9 @@ public class LinhaServiceImpl implements LinhaService {
                 .toList();
     }
 
+    @Override
+    public Long count() {
+        return linhaRepository.count();
+    }
+
 }

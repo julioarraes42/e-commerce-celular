@@ -6,4 +6,6 @@ import julio.br.dto.SerieResponseDTO;
 
 public interface SerieService {
     public List<SerieResponseDTO> findAll();
+
+    public Long count();
 }

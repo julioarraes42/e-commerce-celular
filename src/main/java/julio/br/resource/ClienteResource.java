@@ -50,6 +50,13 @@ public class ClienteResource {
         return Response.ok(clienteService.findByNome(nome, page, pageSize)).build();
     }
 
+    @GET
+    @Path("/count")
+    public Response count() {
+        LOG.info("Contando clientes");
+        return Response.ok(clienteService.count()).build();
+    }
+
     @POST
     @Transactional
     public Response create(ClienteDTO dto) {

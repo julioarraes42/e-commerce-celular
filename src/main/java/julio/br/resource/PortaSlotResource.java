@@ -35,6 +35,12 @@ public class PortaSlotResource {
         return Response.ok(portaSlotService.findAll(page, pageSize)).build();
     }
 
+    @GET
+    @Path("/count")
+    public Response count() {
+        return Response.ok(portaSlotService.count()).build();
+    }
+
     @POST
     @Transactional
     public Response create(PortaSlotDTO dto) {

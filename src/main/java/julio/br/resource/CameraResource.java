@@ -39,6 +39,12 @@ public class CameraResource {
         return Response.ok(cameraService.findAll(page, pageSize)).build();
     }
 
+    @GET
+    @Path("/count")
+    public Response count() {
+        return Response.ok(cameraService.count()).build();
+    }
+
     @POST
     @Transactional
     public Response create(CameraDTO dto) {

@@ -22,6 +22,12 @@ public class ProcessadorServiceImpl implements ProcessadorService {
     public CelularRepository celularRepository;
 
     @Override
+    public ProcessadorResponseDTO findById(Long id) {
+        Processador processador = processadorRepository.findById(id);
+        return ProcessadorResponseDTO.valuesOf(processador);
+    }
+
+    @Override
     public List<ProcessadorResponseDTO> findAll(int page, int pageSize) {
         List<Processador> processadores = processadorRepository
                                                     .findAll()
@@ -45,6 +51,11 @@ public class ProcessadorServiceImpl implements ProcessadorService {
                 .stream()
                 .map(e -> ProcessadorResponseDTO.valuesOf(e))
                 .toList();
+    }
+
+    @Override
+    public Long count() {
+        return processadorRepository.count();
     }
 
     @Override

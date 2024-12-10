@@ -24,4 +24,11 @@ public class LinhaResponse {
         return Response.ok(linhaService.findAll()).build();
     }
 
+    @GET
+    @Path("/count")
+    // @RolesAllowed("Funcionario")
+    public Response count() {
+        return Response.ok(linhaService.count()).build();
+    }
+
 }

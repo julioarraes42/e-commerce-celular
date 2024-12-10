@@ -48,6 +48,17 @@ public class TelaServiceImpl implements TelaService {
     }
 
     @Override
+    public Long count() {
+        return telaRepository.count();
+    }
+
+    @Override
+    public TelaResponseDTO findById(Long id) {
+        Tela tela = telaRepository.findById(id);
+        return TelaResponseDTO.valuesOf(tela);
+    }
+
+    @Override
     public TelaResponseDTO create(TelaDTO dto) {
         Tela tela = new Tela();
 

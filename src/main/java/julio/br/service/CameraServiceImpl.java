@@ -37,6 +37,11 @@ public class CameraServiceImpl implements CameraService {
     }
 
     @Override
+    public Long count() {
+        return cameraRepository.count();
+    }
+
+    @Override
     public CameraResponseDTO create(@Valid CameraDTO dto) {
         Camera camera = new Camera();
 

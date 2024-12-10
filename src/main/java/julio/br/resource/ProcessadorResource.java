@@ -44,6 +44,18 @@ public class ProcessadorResource {
         return Response.ok(processadorService.findByMarca(marca, page, pageSize)).build();
     }
 
+    @GET
+    @Path("/count")
+    public Response count() {
+        return Response.ok(processadorService.count()).build();
+    }
+
+    @GET
+    @Path("/{id}")
+    public Response findById(@PathParam("id") Long id) {
+        return Response.ok(processadorService.findById(id)).build();
+    }
+
     @POST
     @Transactional
     public Response create(ProcessadorDTO dto) {

@@ -181,6 +181,11 @@ public class CelularServiceImpl implements CelularService {
     }
 
     @Override
+    public Long count() {
+        return celularRepository.count();
+    }
+
+    @Override
     @Transactional
     public void update(Long id, @Valid CelularDTO dto) {
         validarNomeEstado(dto.nome());

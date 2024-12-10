@@ -178,4 +178,9 @@ public class ClienteServiceImpl implements ClienteService {
             throw new ValidationException("senha", "senha errada");
     }
 
+    @Override
+    public Long count() {
+        return clienteRepository.count();
+    }
+
 }

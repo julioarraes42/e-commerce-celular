@@ -17,6 +17,8 @@ public interface CelularService {
 
     public List<CelularResponseDTO> findByMarca(String marca, int page, int pageSize);
 
+    public Long count();
+
     public CelularResponseDTO create(@Valid CelularDTO dto);
 
     public void update(Long id, @Valid CelularDTO dto);

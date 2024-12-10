@@ -26,6 +26,11 @@ public class SensorServiceImpl implements SensorService {
     }
 
     @Override
+    public Long count() {
+        return sensorRepository.count();
+    }
+
+    @Override
     @Transactional
     public SensorResponseDTO create(SensorDTO dto) {
         Sensor sensor = new Sensor();

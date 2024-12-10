@@ -10,6 +10,8 @@ public interface CameraService {
 
     public List<CameraResponseDTO> findAll(int page, int pageSize);
 
+    public Long count();
+
     public CameraResponseDTO create(@Valid CameraDTO dto);
 
     public void update(Long id, CameraDTO dto);
