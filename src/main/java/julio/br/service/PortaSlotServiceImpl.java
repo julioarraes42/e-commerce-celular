@@ -72,4 +72,10 @@ public class PortaSlotServiceImpl implements PortaSlotService {
         portaSlotRepository.deleteById(id);
     }
 
+    @Override
+    public PortaSlotResponseDTO findById(Long id) {
+        PortaSlot portaSlot = portaSlotRepository.findById(id);
+        return PortaSlotResponseDTO.valuesOf(portaSlot);
+    }
+
 }

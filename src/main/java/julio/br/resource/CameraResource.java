@@ -40,6 +40,12 @@ public class CameraResource {
     }
 
     @GET
+    @Path("/{id}")
+    public Response findById(@PathParam("id") Long id) {
+        return Response.ok(cameraService.findById(id)).build();
+    }
+
+    @GET
     @Path("/count")
     public Response count() {
         return Response.ok(cameraService.count()).build();

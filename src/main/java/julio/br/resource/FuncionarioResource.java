@@ -40,6 +40,22 @@ public class FuncionarioResource {
         return Response.ok(funcionarioService.findAll(page, pageSize)).build();
     }
 
+    @GET
+    @Path("/{id}")
+    public Response findById(@PathParam("id") Long id) {
+        LOG.info("buscando um funcionario por id");
+        return Response.ok(funcionarioService.findById(id)).build();
+    }
+
+    @GET
+    @Path("/nome/{nome}")
+    public Response findByNome(@PathParam("nome") String nome,
+            @QueryParam("page") @DefaultValue("0") int page,
+            @QueryParam("pageSize") @DefaultValue("100") int pageSize) {
+        LOG.info("Procurando funcionario por nome");
+        return Response.ok(funcionarioService.findByNome(nome, page, pageSize)).build();
+    }
+
     @POST
     @Transactional
     public Response create(FuncionarioDTO dto) {

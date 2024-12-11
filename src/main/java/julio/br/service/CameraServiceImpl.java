@@ -76,4 +76,11 @@ public class CameraServiceImpl implements CameraService {
         cameraRepository.deleteById(id);
     }
 
+    @Override
+    public CameraResponseDTO findById(Long id) {
+        Camera camera = cameraRepository.findById(id);
+
+        return CameraResponseDTO.valuesOff(camera);
+    }
+
 }

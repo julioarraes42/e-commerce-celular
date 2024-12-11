@@ -32,6 +32,13 @@ public class SensorResource {
     }
 
     @GET
+    @Path("/{id}")
+    // @RolesAllowed("Funcionario")
+    public Response findById(Long id) {
+        return Response.ok(sensorService.findById(id)).build();
+    }
+
+    @GET
     @Path("/count")
     // @RolesAllowed("Funcionario")
     public Response count() {

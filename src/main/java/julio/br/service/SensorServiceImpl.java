@@ -53,4 +53,9 @@ public class SensorServiceImpl implements SensorService {
         sensorRepository.deleteById(id);
     }
 
+    @Override
+    public SensorResponseDTO findById(Long id) {
+        return SensorResponseDTO.valuesOf(sensorRepository.findById(id));
+    }
+
 }

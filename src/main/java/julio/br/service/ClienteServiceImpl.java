@@ -183,4 +183,10 @@ public class ClienteServiceImpl implements ClienteService {
         return clienteRepository.count();
     }
 
+    @Override
+    public ClienteResponseDTO findById(Long id) {
+        Cliente cliente = clienteRepository.findById(id);
+        return ClienteResponseDTO.valueOff(cliente);
+    }
+
 }

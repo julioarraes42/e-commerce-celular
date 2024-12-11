@@ -27,4 +27,9 @@ public class LinhaServiceImpl implements LinhaService {
         return linhaRepository.count();
     }
 
+    @Override
+    public LinhaResponseDTO findById(Long id) {
+        return LinhaResponseDTO.valuesOf(linhaRepository.findById(id));
+    }
+
 }

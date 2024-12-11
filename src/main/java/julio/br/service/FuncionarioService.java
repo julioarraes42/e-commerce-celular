@@ -17,6 +17,10 @@ public interface FuncionarioService {
 
     public List<FuncionarioResponseDTO> findAll(int page, int pageSize);
 
+    public List<FuncionarioResponseDTO> findByNome(String nome, int page, int pageSize);
+
+    public FuncionarioResponseDTO findById(Long id);
+
     public UsuarioResponseDTO login(AutorizacaoUsuarioDTO dto);
 
     public void alterarSenha(String senhaAntiga, String senhaNova);

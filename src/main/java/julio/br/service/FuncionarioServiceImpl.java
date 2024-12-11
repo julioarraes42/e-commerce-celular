@@ -130,4 +130,24 @@ public class FuncionarioServiceImpl implements FuncionarioService {
         return funcionarioRepository.count();
     }
 
+    @Override
+    public List<FuncionarioResponseDTO> findByNome(String nome, int page, int pageSize) {
+        List<Funcionario> funcionarios = funcionarioRepository
+                .findByNome(nome)
+                .page(page, pageSize)
+                .list();
+
+        return funcionarios
+                .stream()
+                .map(e -> FuncionarioResponseDTO.valueOff(e))
+                .toList();
+    }
+
+    @Override
+    public FuncionarioResponseDTO findById(Long id) {
+        Funcionario funcionario = funcionarioRepository.findById(id);
+
+        return FuncionarioResponseDTO.valueOff(funcionario);
+    }
+
 }

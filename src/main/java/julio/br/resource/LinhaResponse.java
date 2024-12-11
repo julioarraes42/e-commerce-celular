@@ -25,6 +25,13 @@ public class LinhaResponse {
     }
 
     @GET
+    @Path("/{id}")
+    // @RolesAllowed("Funcionario")
+    public Response findById(Long id) {
+        return Response.ok(linhaService.findById(id)).build();
+    }
+
+    @GET
     @Path("/count")
     // @RolesAllowed("Funcionario")
     public Response count() {

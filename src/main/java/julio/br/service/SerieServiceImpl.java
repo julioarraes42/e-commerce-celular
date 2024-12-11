@@ -27,4 +27,9 @@ public class SerieServiceImpl implements SerieService {
         return serieRepository.count();
     }
 
+    @Override
+    public SerieResponseDTO findById(Long id) {
+        return SerieResponseDTO.valuesOf(serieRepository.findById(id));
+    }
+
 }

@@ -7,6 +7,8 @@ import julio.br.dto.SensorResponseDTO;
 
 public interface SensorService {
 
+    public SensorResponseDTO findById(Long id);
+
     public List<SensorResponseDTO> findAll();
 
     public Long count();

@@ -36,6 +36,12 @@ public class PortaSlotResource {
     }
 
     @GET
+    @Path("/{id}")
+    public Response findById(@PathParam("id") Long id) {
+        return Response.ok(portaSlotService.findById(id)).build();
+    }
+
+    @GET
     @Path("/count")
     public Response count() {
         return Response.ok(portaSlotService.count()).build();

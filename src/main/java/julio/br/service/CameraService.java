@@ -8,6 +8,8 @@ import julio.br.dto.CameraResponseDTO;
 
 public interface CameraService {
 
+    public CameraResponseDTO findById(Long id);
+
     public List<CameraResponseDTO> findAll(int page, int pageSize);
 
     public Long count();

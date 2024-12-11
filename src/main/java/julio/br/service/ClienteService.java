@@ -25,6 +25,8 @@ public interface ClienteService {
 
     public void validarLogin(String login, String senha);
 
+    public ClienteResponseDTO findById(Long id);
+
     public List<ClienteResponseDTO> findAll(int page, int pageSize);
 
     public List<ClienteResponseDTO> findByNome(String nome, int page, int pageSize);
