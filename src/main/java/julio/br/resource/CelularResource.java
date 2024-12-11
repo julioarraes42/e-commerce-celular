@@ -42,11 +42,11 @@ public class CelularResource {
     public Response findAll(
             @PathParam("page") @DefaultValue("0") int page,
             @PathParam("pageSize") @DefaultValue("100") int pageSize) {
-                if (pageSize <= 0) {
-                    return Response.status(Response.Status.BAD_REQUEST)
-                            .entity("Page size must be greater than 0")
-                            .build();
-                }
+        if (pageSize <= 0) {
+            return Response.status(Response.Status.BAD_REQUEST)
+                    .entity("Page size must be greater than 0")
+                    .build();
+        }
         return Response.ok(celularService.findAll(page, pageSize)).build();
     }
 
@@ -65,6 +65,7 @@ public class CelularResource {
     }
 
     @GET
+    @Path("/busca/nome/{nome}")
     public Response findByNome(
             @PathParam("nome") String nome,
             @PathParam("page") @DefaultValue("0") int page,
@@ -85,7 +86,7 @@ public class CelularResource {
     }
 
     @GET
-    @Path("/busca/nome/{nome}")
+    @Path("/busca/nomeCompleto/{nome}")
     public Response findByNome(@PathParam("nome") String nome) {
         return Response.ok(celularService.findByNome(nome)).build();
     }
