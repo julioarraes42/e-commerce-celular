@@ -8,28 +8,28 @@ import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Size;
 
 public record CelularDTO(
-                TelaDTO tela,
+        Long idTela,
 
-                List<CameraDTO> camera,
+        List<Long> idCamera,
 
-                List<Long> idPortaSlot,
+        List<Long> idPortaSlot,
 
-                List<Long> idSensor,
+        List<Long> idSensor,
 
-                ProcessadorDTO processador,
+        Long idProcessador,
 
-                SerieDTO serie,
+        Long idSerie,
 
-                @NotBlank(message = "A marca não pode ser nulo ou vazio") @Size(min = 4, max = 60, message = "O tamanho do nome deve possuir de 4 a 60 caracteres.") String marca,
+        @NotBlank(message = "A marca não pode ser nulo ou vazio") @Size(min = 4, max = 60, message = "O tamanho do nome deve possuir de 4 a 60 caracteres.") String marca,
 
-                @NotBlank(message = "O nome não pode ser nulo ou vazio") @Size(min = 4, max = 60, message = "O tamanho do nome deve possuir de 4 a 60 caracteres.") String nome,
+        @NotBlank(message = "O nome não pode ser nulo ou vazio") @Size(min = 4, max = 60, message = "O tamanho do nome deve possuir de 4 a 60 caracteres.") String nome,
 
-                @Past(message = "data invalida ") LocalDate anoLancamento,
+        @Past(message = "data invalida ") LocalDate anoLancamento,
 
-                Float armazenamento,
+        Float armazenamento,
 
-                Float ram,
+        Float ram,
 
-                Float preco) {
+        Float preco) {
 
 }

@@ -79,43 +79,19 @@ public class CelularServiceImpl implements CelularService {
 
         celularRepository.persist(celular);
 
-        if (serieRepository.findById(dto.serie().id()) == null) {
-            Serie serie = new Serie();
-            serie.setNome(dto.nome());
-            serie.setAnoLancamento(dto.serie().anoLancamento());
-            celular.setSerie(serie);
-            if (linhaRepository.findById(dto.serie().linha().id()) == null) {
-                Linha linha = new Linha();
-                linha.setNome(dto.serie().nome());
-                linha.setAnoLancamento(dto.serie().linha().anoLancamento());
-                serie.setLinha(linha);
-                linhaRepository.persist(linha);
-            } else {
-                serie.setLinha(linhaRepository.findById(dto.serie().linha().id()));
+        serieRepository.persist(serieRepository.findById(dto.idSerie()));
+        celular.setSerie(serieRepository.findById(dto.idSerie()));
+
+        celular.setProcessador(processadorRepository.findById(dto.idProcessador()));
+        processadorRepository.persist(processadorRepository.findById(dto.idProcessador()));
+
+        celular.setTela(telaRepository.findById(dto.idTela()));
+        telaRepository.persist(telaRepository.findById(dto.idTela()));
+
+        for (Long camera : dto.idCamera()) {
+            if (camera != null && camera != 0) {
+                celular.getCamera().add(cameraRepository.findById(camera));
             }
-            serieRepository.persist(serie);
-        } else {
-            celular.setSerie(serieRepository.findById(dto.serie().id()));
-        }
-
-        Processador processador = new Processador();
-        processador.setMarca(dto.processador().marca());
-        processador.setModelo(dto.processador().modelo());
-        celular.setProcessador(processador);
-        processadorRepository.persist(processador);
-
-        Tela tela = new Tela();
-        tela.setResolucao(dto.tela().resolucao());
-        tela.setTamanho(dto.tela().tamanho());
-        celular.setTela(tela);
-        telaRepository.persist(tela);
-
-        for (CameraDTO cam : dto.camera()) {
-            Camera c = new Camera();
-            c.setResolucao(cam.resolucao());
-            c.setFrontal(cam.frontal());
-            celular.getCamera().add(c);
-            cameraRepository.persist(c);
         }
 
         for (Long porta : dto.idPortaSlot()) {
@@ -138,29 +114,29 @@ public class CelularServiceImpl implements CelularService {
         if (pageSize <= 0) {
             throw new IllegalArgumentException("Page size must be greater than 0");
         }
-    
+
         List<Celular> celulares = celularRepository
                 .findAll()
                 .page(Page.of(page, pageSize))
                 .list();
-    
+
         return celulares
                 .stream()
                 .map(CelularResponseDTO::valuesOff)
                 .toList();
     }
-    
+
     @Override
     public List<CelularResponseDTO> findByNome(String nome, int page, int pageSize) {
         if (pageSize <= 0) {
             throw new IllegalArgumentException("Page size must be greater than 0");
         }
-    
+
         List<Celular> celulares = celularRepository
                 .findByNome(nome)
                 .page(Page.of(page, pageSize))
                 .list();
-    
+
         return celulares
                 .stream()
                 .map(CelularResponseDTO::valuesOff)
@@ -201,15 +177,16 @@ public class CelularServiceImpl implements CelularService {
         celularBanco.setRam(dto.ram());
         celularBanco.setPreco(dto.preco());
 
-        celularBanco.setProcessador(processadorRepository.findById(dto.processador().id()));
-        celularBanco.setSerie(serieRepository.findById(dto.serie().id()));
+        celularBanco.setProcessador(processadorRepository.findById(dto.idProcessador()));
+        celularBanco.setSerie(serieRepository.findById(dto.idSerie()));
 
-        celularBanco.getTela().setResolucao(dto.tela().resolucao());
-        celularBanco.getTela().setTamanho(dto.tela().tamanho());
+        celularBanco.getTela().setResolucao(telaRepository.findById(dto.idTela()).getResolucao());
+        celularBanco.getTela().setTamanho(telaRepository.findById(dto.idTela()).getTamanho());
 
-        for (int i = 0; i < dto.camera().size(); i++) {
-            celularBanco.getCamera().get(i).setResolucao(dto.camera().get(i).resolucao());
-            celularBanco.getCamera().get(i).setFrontal(dto.camera().get(i).frontal());
+        for (int i = 0; i < dto.idCamera().size(); i++) {
+            celularBanco.getCamera().get(i)
+                    .setResolucao(cameraRepository.findById(dto.idCamera().get(i)).getResolucao());
+            celularBanco.getCamera().get(i).setFrontal(cameraRepository.findById(dto.idCamera().get(i)).getFrontal());
         }
 
     }
