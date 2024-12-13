@@ -59,6 +59,7 @@ C:\Users\admin\Desktop\e-commerce-celular\src\main\java\julio\br\resource\Celula
 C:\Users\admin\Desktop\e-commerce-celular\src\main\java\julio\br\resource\ClienteResource.java
 C:\Users\admin\Desktop\e-commerce-celular\src\main\java\julio\br\resource\FuncionarioResource.java
 C:\Users\admin\Desktop\e-commerce-celular\src\main\java\julio\br\resource\LinhaResponse.java
+C:\Users\admin\Desktop\e-commerce-celular\src\main\java\julio\br\resource\PixResource.java
 C:\Users\admin\Desktop\e-commerce-celular\src\main\java\julio\br\resource\PortaSlotResource.java
 C:\Users\admin\Desktop\e-commerce-celular\src\main\java\julio\br\resource\ProcessadorResource.java
 C:\Users\admin\Desktop\e-commerce-celular\src\main\java\julio\br\resource\SensorResource.java
@@ -81,10 +82,12 @@ C:\Users\admin\Desktop\e-commerce-celular\src\main\java\julio\br\service\JwtServ
 C:\Users\admin\Desktop\e-commerce-celular\src\main\java\julio\br\service\JwtServiceImpl.java
 C:\Users\admin\Desktop\e-commerce-celular\src\main\java\julio\br\service\LinhaService.java
 C:\Users\admin\Desktop\e-commerce-celular\src\main\java\julio\br\service\LinhaServiceImpl.java
+C:\Users\admin\Desktop\e-commerce-celular\src\main\java\julio\br\service\PixPayloadGenerator.java
 C:\Users\admin\Desktop\e-commerce-celular\src\main\java\julio\br\service\PortaSlotService.java
 C:\Users\admin\Desktop\e-commerce-celular\src\main\java\julio\br\service\PortaSlotServiceImpl.java
 C:\Users\admin\Desktop\e-commerce-celular\src\main\java\julio\br\service\ProcessadorService.java
 C:\Users\admin\Desktop\e-commerce-celular\src\main\java\julio\br\service\ProcessadorServiceImpl.java
+C:\Users\admin\Desktop\e-commerce-celular\src\main\java\julio\br\service\QrCodeGenerator.java
 C:\Users\admin\Desktop\e-commerce-celular\src\main\java\julio\br\service\SensorService.java
 C:\Users\admin\Desktop\e-commerce-celular\src\main\java\julio\br\service\SensorServiceImpl.java
 C:\Users\admin\Desktop\e-commerce-celular\src\main\java\julio\br\service\SerieService.java

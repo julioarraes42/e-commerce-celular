@@ -1,7 +1,3 @@
-julio\br\resource\SensorResourceTest.class
-julio\br\resource\SerieResourceTest.class
 julio\br\resource\LinhaResourceTest.class
-julio\br\resource\PortaSlotResourceTest.class
 julio\br\resource\ProcessadorResourceTest.class
-julio\br\resource\TelaResourceTest.class
-julio\br\resource\CelularResourceTest.class
+julio\br\resource\SensorResourceTest.class

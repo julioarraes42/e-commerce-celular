@@ -16,13 +16,10 @@ public class PixResource {
     @GET
     @Path("/qrcode")
     @Produces("image/png")
-    public Response generatePixQrCode(@QueryParam("key") String key,
-            @QueryParam("name") String name,
-            @QueryParam("city") String city,
-            @QueryParam("amount") double amount,
-            @QueryParam("txId") String txId) {
+    public Response generatePixQrCode(
+            @QueryParam("amount") double amount) {
         try {
-            String payload = PixPayloadGenerator.generatePayload(key, name, city, amount, txId);
+            String payload = PixPayloadGenerator.generatePayload(amount);
             java.nio.file.Path tempFile = Files.createTempFile("qrcode", ".png");
             QrCodeGenerator.generateQrCode(payload, tempFile);
 
