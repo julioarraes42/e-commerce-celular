@@ -142,6 +142,7 @@ INSERT INTO celular_sensor (celular_id, sensor_id) VALUES (10, 10);
 -- Claudia: claudia890
 
 -- Inserindo usuários na tabela usuario
+INSERT INTO usuario (login, senha) VALUES ('julio', 'jDG4bVLVolzg4JgBQgelxVcOMW5vNB3Gpo0SX+IFhn3IWtRBeKpoL7yIE/cjHWU=');
 INSERT INTO usuario (login, senha) VALUES ('maria', '5RuvcWE4ylYBQDyWhUoQvhlonPE6X7bCmEN59fi6DgNSVwtzMwhXrkdzI9rA1go=');
 INSERT INTO usuario (login, senha) VALUES ('paulo', 'f9PiTXEJWfY6gdm8bF7LyqsT6tVGUCVHOlZX4iX8EwRPOfLMTZn5kU3BQ7wMNY8=');
 INSERT INTO usuario (login, senha) VALUES ('ana', 'qLmZjPSF3Q6UvylOiEDVWj5QNKLjOB0AtzRHSZIqBrU4LdpVRCYIBob5Unhf3U0=');
@@ -151,9 +152,6 @@ INSERT INTO usuario (login, senha) VALUES ('marcia', 'nOp2ZjLH5Z4RV3UEPLvczlNkQY
 INSERT INTO usuario (login, senha) VALUES ('fernanda', 'uGtX7b2cER5LkQpTNZmVY6CMOqZ19RyEBnXjFL2TGR5IV8oBLXzMpHQ6VF1RT6I=');
 INSERT INTO usuario (login, senha) VALUES ('renato', 'zKMU3W5QF9PL6OTX7VyER2MCQG4VkXoBYn5jTHo6zLmNpRBE8zQRYFqO7TXLk8E=');
 INSERT INTO usuario (login, senha) VALUES ('claudia', 'qNpX4bZGT6VRkOzLM2QoFTW3L7zRY1EqPnXj5UCoBRM9YX5EQ1VTF6HoOz2Z3Wb=');
-
-
-INSERT INTO usuario (login, senha) VALUES ('julio', 'jDG4bVLVolzg4JgBQgelxVcOMW5vNB3Gpo0SX+IFhn3IWtRBeKpoL7yIE/cjHWU=');
 INSERT INTO usuario (login, senha) VALUES ('ricardo', 'i/rX8LnqIdA+RAS+LeqaMv/iYbbmDCf2lNwHztFby9VgRWvm1myBQxadulJM2o8=');
 
 -- -- Funcionários
