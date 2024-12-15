@@ -5,6 +5,8 @@ import java.util.List;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import julio.br.dto.LinhaResponseDTO;
+import julio.br.dto.LinhaResponseDTO;
+import julio.br.model.Linha;
 import julio.br.repository.LinhaRepository;
 
 @ApplicationScoped
@@ -29,7 +31,8 @@ public class LinhaServiceImpl implements LinhaService {
 
     @Override
     public LinhaResponseDTO findById(Long id) {
-        return LinhaResponseDTO.valuesOf(linhaRepository.findById(id));
+        Linha linha = linhaRepository.findById(id);
+        return LinhaResponseDTO.valuesOf(linha);
     }
 
 }
