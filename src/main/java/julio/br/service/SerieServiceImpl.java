@@ -5,6 +5,8 @@ import java.util.List;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import julio.br.dto.SerieResponseDTO;
+import julio.br.dto.SerieResponseDTO;
+import julio.br.model.Serie;
 import julio.br.repository.SerieRepository;
 
 @ApplicationScoped
@@ -29,7 +31,8 @@ public class SerieServiceImpl implements SerieService {
 
     @Override
     public SerieResponseDTO findById(Long id) {
-        return SerieResponseDTO.valuesOf(serieRepository.findById(id));
+        Serie serie = serieRepository.findById(id);
+        return SerieResponseDTO.valuesOf(serie);
     }
 
 }

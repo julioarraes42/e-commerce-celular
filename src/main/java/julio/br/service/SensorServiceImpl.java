@@ -55,7 +55,8 @@ public class SensorServiceImpl implements SensorService {
 
     @Override
     public SensorResponseDTO findById(Long id) {
-        return SensorResponseDTO.valuesOf(sensorRepository.findById(id));
+        Sensor sensor = sensorRepository.findById(id);
+        return SensorResponseDTO.valuesOf(sensor);
     }
 
 }
