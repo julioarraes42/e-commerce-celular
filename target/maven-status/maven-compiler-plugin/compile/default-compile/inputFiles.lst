@@ -11,6 +11,10 @@ C:\Users\Usuario\Downloads\e-commerce-celular\src\main\java\julio\br\dto\Funcion
 C:\Users\Usuario\Downloads\e-commerce-celular\src\main\java\julio\br\dto\FuncionarioResponseDTO.java
 C:\Users\Usuario\Downloads\e-commerce-celular\src\main\java\julio\br\dto\LinhaDTO.java
 C:\Users\Usuario\Downloads\e-commerce-celular\src\main\java\julio\br\dto\LinhaResponseDTO.java
+C:\Users\Usuario\Downloads\e-commerce-celular\src\main\java\julio\br\dto\pedido\ItemPedidoDTO.java
+C:\Users\Usuario\Downloads\e-commerce-celular\src\main\java\julio\br\dto\pedido\ItemPedidoResponseDTO.java
+C:\Users\Usuario\Downloads\e-commerce-celular\src\main\java\julio\br\dto\pedido\PedidoDTO.java
+C:\Users\Usuario\Downloads\e-commerce-celular\src\main\java\julio\br\dto\pedido\PedidoResponseDTO.java
 C:\Users\Usuario\Downloads\e-commerce-celular\src\main\java\julio\br\dto\PortaSlotDTO.java
 C:\Users\Usuario\Downloads\e-commerce-celular\src\main\java\julio\br\dto\PortaSlotResponseDTO.java
 C:\Users\Usuario\Downloads\e-commerce-celular\src\main\java\julio\br\dto\ProcessadorDTO.java
@@ -31,8 +35,15 @@ C:\Users\Usuario\Downloads\e-commerce-celular\src\main\java\julio\br\model\Celul
 C:\Users\Usuario\Downloads\e-commerce-celular\src\main\java\julio\br\model\Cliente.java
 C:\Users\Usuario\Downloads\e-commerce-celular\src\main\java\julio\br\model\DefaultEntity.java
 C:\Users\Usuario\Downloads\e-commerce-celular\src\main\java\julio\br\model\FormaPagamento.java
+C:\Users\Usuario\Downloads\e-commerce-celular\src\main\java\julio\br\model\formaPagamento\BandeiraCartao.java
+C:\Users\Usuario\Downloads\e-commerce-celular\src\main\java\julio\br\model\formaPagamento\Boleto.java
+C:\Users\Usuario\Downloads\e-commerce-celular\src\main\java\julio\br\model\formaPagamento\CartaoCredito.java
+C:\Users\Usuario\Downloads\e-commerce-celular\src\main\java\julio\br\model\formaPagamento\FormaPagamento2.java
+C:\Users\Usuario\Downloads\e-commerce-celular\src\main\java\julio\br\model\formaPagamento\Pix.java
 C:\Users\Usuario\Downloads\e-commerce-celular\src\main\java\julio\br\model\Funcionario.java
 C:\Users\Usuario\Downloads\e-commerce-celular\src\main\java\julio\br\model\Linha.java
+C:\Users\Usuario\Downloads\e-commerce-celular\src\main\java\julio\br\model\pedido\ItemPedido.java
+C:\Users\Usuario\Downloads\e-commerce-celular\src\main\java\julio\br\model\pedido\Pedido.java
 C:\Users\Usuario\Downloads\e-commerce-celular\src\main\java\julio\br\model\PortaSlot.java
 C:\Users\Usuario\Downloads\e-commerce-celular\src\main\java\julio\br\model\Processador.java
 C:\Users\Usuario\Downloads\e-commerce-celular\src\main\java\julio\br\model\Sensor.java

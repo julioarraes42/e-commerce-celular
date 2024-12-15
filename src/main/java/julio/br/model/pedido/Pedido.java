@@ -11,8 +11,6 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import julio.br.model.Cliente;
 import julio.br.model.DefaultEntity;
-import julio.br.model.Venda;
-import julio.br.model.formaPagamento.FormaPagamento2;
 
 @Entity
 public class Pedido extends DefaultEntity {
@@ -23,10 +21,6 @@ public class Pedido extends DefaultEntity {
 
     private Boolean ifPedidoFeito = false;
 
-    @OneToOne
-    @JoinColumn(name = "id_formaPagamento", unique = true)
-    private FormaPagamento2 formaPagamento;
-
     @ManyToOne
     @JoinColumn(name = "id_cliente")
     private Cliente cliente;
@@ -34,8 +28,6 @@ public class Pedido extends DefaultEntity {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "id_pedido")
     private List<ItemPedido> itens;
-
-    private List<Venda> vendas;
 
     public LocalDateTime getDataPedido() {
         return dataPedido;
@@ -61,14 +53,6 @@ public class Pedido extends DefaultEntity {
         this.ifPedidoFeito = ifPedidoFeito;
     }
 
-    public FormaPagamento2 getFormaPagamento() {
-        return formaPagamento;
-    }
-
-    public void setFormaPagamento(FormaPagamento2 formaPagamento) {
-        this.formaPagamento = formaPagamento;
-    }
-
     public Cliente getCliente() {
         return cliente;
     }
@@ -85,11 +69,4 @@ public class Pedido extends DefaultEntity {
         this.itens = itens;
     }
 
-    public List<Venda> getVendas() {
-        return vendas;
-    }
-
-    public void setVendas(List<Venda> vendas) {
-        this.vendas = vendas;
-    }
 }
