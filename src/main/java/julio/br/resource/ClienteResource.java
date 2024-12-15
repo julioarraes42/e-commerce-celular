@@ -34,8 +34,7 @@ public class ClienteResource {
     @GET
     public Response findAll(
             @PathParam("page") @DefaultValue("0") int page,
-            @PathParam("pageSize") @DefaultValue("100") int pageSize
-    ) {
+            @PathParam("pageSize") @DefaultValue("100") int pageSize) {
         LOG.info("Procurando todos os clientes");
         return Response.ok(clienteService.findAll(page, pageSize)).build();
     }
@@ -44,8 +43,7 @@ public class ClienteResource {
     public Response findByNome(
             @PathParam("nome") String nome,
             @PathParam("page") @DefaultValue("0") int page,
-            @PathParam("pageSize") @DefaultValue("100") int pageSize
-    ) {
+            @PathParam("pageSize") @DefaultValue("100") int pageSize) {
         LOG.info("Procurando cliente por nome");
         return Response.ok(clienteService.findByNome(nome, page, pageSize)).build();
     }

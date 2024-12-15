@@ -20,7 +20,7 @@ public class ClienteRepository implements PanacheRepository<Cliente> {
     }
 
     // public PanacheQuery<Cliente> findAllPaginado() {
-    //     return findAll();
+    // return findAll();
     // }
 
 }

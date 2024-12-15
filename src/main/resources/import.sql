@@ -143,6 +143,7 @@ INSERT INTO celular_sensor (celular_id, sensor_id) VALUES (10, 10);
 
 -- Inserindo usuários na tabela usuario
 INSERT INTO usuario (login, senha) VALUES ('julio', 'jDG4bVLVolzg4JgBQgelxVcOMW5vNB3Gpo0SX+IFhn3IWtRBeKpoL7yIE/cjHWU=');
+INSERT INTO usuario (login, senha) VALUES ('ricardo', 'i/rX8LnqIdA+RAS+LeqaMv/iYbbmDCf2lNwHztFby9VgRWvm1myBQxadulJM2o8=');
 INSERT INTO usuario (login, senha) VALUES ('maria', '5RuvcWE4ylYBQDyWhUoQvhlonPE6X7bCmEN59fi6DgNSVwtzMwhXrkdzI9rA1go=');
 INSERT INTO usuario (login, senha) VALUES ('paulo', 'f9PiTXEJWfY6gdm8bF7LyqsT6tVGUCVHOlZX4iX8EwRPOfLMTZn5kU3BQ7wMNY8=');
 INSERT INTO usuario (login, senha) VALUES ('ana', 'qLmZjPSF3Q6UvylOiEDVWj5QNKLjOB0AtzRHSZIqBrU4LdpVRCYIBob5Unhf3U0=');
@@ -152,7 +153,6 @@ INSERT INTO usuario (login, senha) VALUES ('marcia', 'nOp2ZjLH5Z4RV3UEPLvczlNkQY
 INSERT INTO usuario (login, senha) VALUES ('fernanda', 'uGtX7b2cER5LkQpTNZmVY6CMOqZ19RyEBnXjFL2TGR5IV8oBLXzMpHQ6VF1RT6I=');
 INSERT INTO usuario (login, senha) VALUES ('renato', 'zKMU3W5QF9PL6OTX7VyER2MCQG4VkXoBYn5jTHo6zLmNpRBE8zQRYFqO7TXLk8E=');
 INSERT INTO usuario (login, senha) VALUES ('claudia', 'qNpX4bZGT6VRkOzLM2QoFTW3L7zRY1EqPnXj5UCoBRM9YX5EQ1VTF6HoOz2Z3Wb=');
-INSERT INTO usuario (login, senha) VALUES ('ricardo', 'i/rX8LnqIdA+RAS+LeqaMv/iYbbmDCf2lNwHztFby9VgRWvm1myBQxadulJM2o8=');
 
 -- -- Funcionários
 -- ('joao.silva', '" + getHashSenha("senha123Joao") + "'), -- Cargo: Gerente de Vendas
@@ -162,16 +162,16 @@ INSERT INTO usuario (login, senha) VALUES ('ricardo', 'i/rX8LnqIdA+RAS+LeqaMv/iY
 
 -- Inserindo clientes na tabela cliente
 -- INSERT INTO cliente (nome, cep, cpf, id_usuario) VALUES ('julio', 12345678, '123.456.789-01', 1);
-INSERT INTO cliente (nome, cep, cpf, id_usuario) VALUES ('maria', 87654321, '987.654.321-00', 2);
-INSERT INTO cliente (nome, cep, cpf, id_usuario) VALUES ('ana', 11223344, '345.678.901-23', 3);
-INSERT INTO cliente (nome, cep, cpf, id_usuario) VALUES ('lucas', 33445566, '456.789.012-34', 4);
-INSERT INTO cliente (nome, cep, cpf, id_usuario) VALUES ('fernanda', 55667788, '567.890.123-45', 5);
+INSERT INTO cliente (nome, cep, cpf, id_usuario) VALUES ('maria', 87654321, '987.654.321-00', 3);
+INSERT INTO cliente (nome, cep, cpf, id_usuario) VALUES ('ana', 11223344, '345.678.901-23', 5);
+INSERT INTO cliente (nome, cep, cpf, id_usuario) VALUES ('lucas', 33445566, '456.789.012-34', 7);
+INSERT INTO cliente (nome, cep, cpf, id_usuario) VALUES ('fernanda', 55667788, '567.890.123-45', 9);
 INSERT INTO cliente (nome, cep, cpf, id_usuario) VALUES ('julio', 123, 123, 1);
 
 -- Inserindo funcionários na tabela funcionario
-INSERT INTO funcionario (nome, cep, cpf, cnpj, id_usuario) VALUES ('paulo', 22334455, '123.987.654-32', '12.345.678/0001-99', 6);
-INSERT INTO funcionario (nome, cep, cpf, cnpj, id_usuario) VALUES ('carlos', 66778899, '987.123.456-78', '23.456.789/0002-88', 7);
+INSERT INTO funcionario (nome, cep, cpf, cnpj, id_usuario) VALUES ('paulo', 22334455, '123.987.654-32', '12.345.678/0001-99', 4);
+INSERT INTO funcionario (nome, cep, cpf, cnpj, id_usuario) VALUES ('carlos', 66778899, '987.123.456-78', '23.456.789/0002-88', 6);
 INSERT INTO funcionario (nome, cep, cpf, cnpj, id_usuario) VALUES ('marcia', 88997766, '345.678.912-12', '34.567.890/0003-77', 8);
-INSERT INTO funcionario (nome, cep, cpf, cnpj, id_usuario) VALUES ('renato', 55443322, '456.789.123-67', '45.678.901/0004-66', 9);
-INSERT INTO funcionario (nome, cep, cpf, cnpj, id_usuario) VALUES ('claudia', 99887766, '567.890.234-89', '56.789.012/0005-55', 10);
+INSERT INTO funcionario (nome, cep, cpf, cnpj, id_usuario) VALUES ('renato', 55443322, '456.789.123-67', '45.678.901/0004-66', 10);
+INSERT INTO funcionario (nome, cep, cpf, cnpj, id_usuario) VALUES ('claudia', 99887766, '567.890.234-89', '56.789.012/0005-55', 11);
 INSERT INTO funcionario (nome, cep, cpf, cnpj, id_usuario) VALUES ('ricardo', 123, 123, 222, 2);
