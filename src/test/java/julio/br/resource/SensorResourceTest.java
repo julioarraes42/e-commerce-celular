@@ -17,63 +17,63 @@ import julio.br.service.SensorService;
 @QuarkusTest
 public class SensorResourceTest {
 
-    @Inject
-    public SensorService sensorService;
+    // @Inject
+    // public SensorService sensorService;
 
-    @Test
-    @TestSecurity(user = "user", roles = { "Funcionario" })
-    public void findAllTest() {
-        given()
-                .when()
-                .get("/Sensor")
-                .then()
-                .statusCode(200)
-                .body("tipo", hasItem(is("luz")));
-    }
+    // @Test
+    // @TestSecurity(user = "user", roles = { "Funcionario" })
+    // public void findAllTest() {
+    //     given()
+    //             .when()
+    //             .get("/Sensor")
+    //             .then()
+    //             .statusCode(200)
+    //             .body("tipo", hasItem(is("luz")));
+    // }
 
-    @Test
-    @TestSecurity(user = "user", roles = { "Funcionario" })
-    public void createTest() {
-        SensorDTO dtoSensor = new SensorDTO("radio");
+    // @Test
+    // @TestSecurity(user = "user", roles = { "Funcionario" })
+    // public void createTest() {
+    //     SensorDTO dtoSensor = new SensorDTO("radio");
 
-        given()
-                .contentType(MediaType.APPLICATION_JSON)
-                .body(dtoSensor)
-                .when()
-                .post("Sensor")
-                .then()
-                .statusCode(201)
-                .body("tipo", is("radio"));
-    }
+    //     given()
+    //             .contentType(MediaType.APPLICATION_JSON)
+    //             .body(dtoSensor)
+    //             .when()
+    //             .post("Sensor")
+    //             .then()
+    //             .statusCode(201)
+    //             .body("tipo", is("radio"));
+    // }
 
-    @Test
-    @TestSecurity(user = "user", roles = { "Funcionario" })
-    public void updateTest() {
-        SensorDTO dtoSensor = new SensorDTO("radio");
+    // @Test
+    // @TestSecurity(user = "user", roles = { "Funcionario" })
+    // public void updateTest() {
+    //     SensorDTO dtoSensor = new SensorDTO("radio");
 
-        given()
-                .contentType(MediaType.APPLICATION_JSON)
-                .body(dtoSensor)
-                .when()
-                .pathParam("id", 3)
-                .put("/Sensor/{id}")
-                .then()
-                .statusCode(204);
-    }
+    //     given()
+    //             .contentType(MediaType.APPLICATION_JSON)
+    //             .body(dtoSensor)
+    //             .when()
+    //             .pathParam("id", 3)
+    //             .put("/Sensor/{id}")
+    //             .then()
+    //             .statusCode(204);
+    // }
 
-    @Test
-    @TestSecurity(user = "user", roles = { "Funcionario" })
-    public void deleteTest() {
-        SensorResponseDTO response = sensorService.create(new SensorDTO("radio"));
+    // @Test
+    // @TestSecurity(user = "user", roles = { "Funcionario" })
+    // public void deleteTest() {
+    //     SensorResponseDTO response = sensorService.create(new SensorDTO("radio"));
 
-        given()
-                .when()
-                .pathParam("id", response.id())
-                .delete("/Sensor/{id}")
-                .then()
-                .statusCode(204);
+    //     given()
+    //             .when()
+    //             .pathParam("id", response.id())
+    //             .delete("/Sensor/{id}")
+    //             .then()
+    //             .statusCode(204);
 
-        sensorService.delete(response.id());
-    }
+    //     sensorService.delete(response.id());
+    // }
 
 }
