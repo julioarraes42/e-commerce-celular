@@ -45,9 +45,11 @@ public class ClienteServiceImpl implements ClienteService {
         validarUsername(dto.login());
         validarCPF(dto.cpf());
 
+        System.out.println(dto.toString());
+
         Usuario usuario = new Usuario();
         usuario.setLogin(dto.login());
-        usuario.setSenha(hash.getHashSenha(dto.Senha()));
+        usuario.setSenha(hash.getHashSenha(dto.senha()));
 
         usuarioRepository.persist(usuario);
 
@@ -72,7 +74,7 @@ public class ClienteServiceImpl implements ClienteService {
         cliente.setCpf(dto.cpf());
         cliente.setNome(dto.nome());
         cliente.getUsuario().setLogin(dto.login());
-        cliente.getUsuario().setSenha(hash.getHashSenha(dto.Senha()));
+        cliente.getUsuario().setSenha(hash.getHashSenha(dto.senha()));
 
     }
 
@@ -87,7 +89,7 @@ public class ClienteServiceImpl implements ClienteService {
                 .findAll()
                 .page(page, pageSize)
                 .list();
-        
+
         return clientes
                 .stream()
                 .map(e -> ClienteResponseDTO.valueOff(e)).toList();
@@ -98,8 +100,8 @@ public class ClienteServiceImpl implements ClienteService {
         List<Cliente> clientes = clienteRepository
                 .findByNome(nome)
                 .page(page, pageSize)
-                .list();        
-        
+                .list();
+
         return clientes
                 .stream()
                 .map(e -> ClienteResponseDTO.valueOff(e))
@@ -130,7 +132,7 @@ public class ClienteServiceImpl implements ClienteService {
 
     @Override
     public Cliente dadosCliente() {
-        return ((Cliente)clienteRepository.findByNome(securityIdentity.getPrincipal().getName()));
+        return ((Cliente) clienteRepository.findByNome(securityIdentity.getPrincipal().getName()));
     }
 
     @Override
@@ -144,7 +146,7 @@ public class ClienteServiceImpl implements ClienteService {
     public void alterarSenha(String senhaAntiga, String senhaNova) {
         HashService hash = new HashServiceImpl();
         validarSenha(hash.getHashSenha(senhaAntiga));
-        ((Cliente)clienteRepository.findByNome(securityIdentity.getPrincipal().getName()))
+        ((Cliente) clienteRepository.findByNome(securityIdentity.getPrincipal().getName()))
                 .getUsuario()
                 .setSenha(hash.getHashSenha(senhaNova));
     }
@@ -172,7 +174,8 @@ public class ClienteServiceImpl implements ClienteService {
 
     @Override
     public void validarSenha(String senha) {
-        String senhaAntiga = ((Cliente)clienteRepository.findByNome(securityIdentity.getPrincipal().getName())).getUsuario()
+        String senhaAntiga = ((Cliente) clienteRepository.findByNome(securityIdentity.getPrincipal().getName()))
+                .getUsuario()
                 .getSenha();
         if (!senhaAntiga.equals(senha))
             throw new ValidationException("senha", "senha errada");

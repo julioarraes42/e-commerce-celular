@@ -85,6 +85,7 @@ public class CelularServiceImpl implements CelularService {
         celular.setProcessador(processadorRepository.findById(dto.idProcessador()));
         processadorRepository.persist(processadorRepository.findById(dto.idProcessador()));
 
+        System.out.println(dto.toString());
         celular.setTela(telaRepository.findById(dto.idTela()));
         telaRepository.persist(telaRepository.findById(dto.idTela()));
 
