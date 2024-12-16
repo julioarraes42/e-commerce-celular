@@ -11,6 +11,7 @@ import julio.br.dto.VendaDTO;
 import julio.br.dto.VendaResponseDTO;
 import julio.br.model.Celular;
 import julio.br.model.CelularVenda;
+import julio.br.model.Cliente;
 import julio.br.model.DefaultEntity;
 import julio.br.model.Venda;
 import julio.br.repository.CelularRepository;
@@ -54,7 +55,9 @@ public class VendaServiceImpl implements VendaService {
             venda.getCelularVenda().add(item);
         }
 
-        Long id = ((DefaultEntity)clienteRepository.findByNome(securityContext.getUserPrincipal().getName())).getId();
+        Cliente cliente = clienteRepository.findByNome(securityContext.getUserPrincipal().getName()).firstResult();
+        Long id = cliente.getId();
+        venda.setCliente(cliente);
 
         venda.setCliente(clienteRepository.findById(id));
         venda.setData(dto.data());

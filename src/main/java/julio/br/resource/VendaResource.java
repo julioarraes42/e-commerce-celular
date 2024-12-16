@@ -1,5 +1,6 @@
 package julio.br.resource;
 
+import jakarta.annotation.security.RolesAllowed;
 // import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
@@ -28,13 +29,13 @@ public class VendaResource {
     public VendaService vendaService;
 
     @GET
-    // @RolesAllowed("Funcionario")
+    @RolesAllowed("Funcionario")
     public Response findAll() {
         return Response.ok(vendaService.findAll()).build();
     }
 
     @GET
-    // @RolesAllowed("Funcionario")
+    @RolesAllowed("Funcionario")
     @Path("/busca/cliente/{idCliente}")
     public Response findByCliente(@PathParam("idCliente") Long idCliente) {
         return Response.ok(vendaService.findByCliente(idCliente)).build();
@@ -42,7 +43,7 @@ public class VendaResource {
 
     @POST
     @Transactional
-    // @RolesAllowed("Cliente")
+    @RolesAllowed("Cliente")
     public Response create(VendaDTO dto) {
         return Response.status(Status.CREATED).entity(vendaService.create(dto)).build();
     }

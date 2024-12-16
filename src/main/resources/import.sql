@@ -172,8 +172,8 @@ INSERT INTO cliente (nome, cep, cpf, id_usuario) VALUES ('fernanda', 55667788, '
 -- INSERT INTO cliente (nome, cep, cpf, id_usuario) VALUES ('julio', 123, 123, 1);
 
 -- Inserindo funcionários na tabela funcionario
-INSERT INTO funcionario (nome, cep, cpf, cnpj, id_usuario) VALUES ('paulo', 22334455, '123.987.654-32', '12.345.678/0001-99', 6);
-INSERT INTO funcionario (nome, cep, cpf, cnpj, id_usuario) VALUES ('carlos', 66778899, '987.123.456-78', '23.456.789/0002-88', 7);
+INSERT INTO funcionario (nome, cep, cpf, cnpj, id_usuario) VALUES ('paulo', 22334455, '123.987.654-32', '12.345.678/0001-99', 4);
+INSERT INTO funcionario (nome, cep, cpf, cnpj, id_usuario) VALUES ('carlos', 66778899, '987.123.456-78', '23.456.789/0002-88', 6);
 INSERT INTO funcionario (nome, cep, cpf, cnpj, id_usuario) VALUES ('marcia', 88997766, '345.678.912-12', '34.567.890/0003-77', 8);
 INSERT INTO funcionario (nome, cep, cpf, cnpj, id_usuario) VALUES ('renato', 55443322, '456.789.123-67', '45.678.901/0004-66', 9);
 INSERT INTO funcionario (nome, cep, cpf, cnpj, id_usuario) VALUES ('claudia', 99887766, '567.890.234-89', '56.789.012/0005-55', 10);
