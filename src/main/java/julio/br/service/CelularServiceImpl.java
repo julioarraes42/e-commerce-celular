@@ -21,6 +21,7 @@ import julio.br.model.Serie;
 import julio.br.model.Tela;
 import julio.br.repository.CameraRepository;
 import julio.br.repository.CelularRepository;
+import julio.br.repository.EnderecoRepository;
 import julio.br.repository.LinhaRepository;
 import julio.br.repository.PortaSlotRepository;
 import julio.br.repository.ProcessadorRepository;

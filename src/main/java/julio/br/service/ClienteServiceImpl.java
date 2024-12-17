@@ -13,9 +13,11 @@ import julio.br.dto.ClienteDTO;
 import julio.br.dto.ClienteResponseDTO;
 import julio.br.dto.UsuarioResponseDTO;
 import julio.br.model.Cliente;
+import julio.br.model.Endereco;
 import julio.br.model.Usuario;
 import julio.br.model.Venda;
 import julio.br.repository.ClienteRepository;
+import julio.br.repository.EnderecoRepository;
 import julio.br.repository.UsuarioRepository;
 import julio.br.repository.VendaRepository;
 import julio.br.validation.ValidationException;
@@ -38,6 +40,9 @@ public class ClienteServiceImpl implements ClienteService {
     @Inject
     public SecurityContext securityContext;
 
+    @Inject
+    public EnderecoRepository enderecoRepository;
+
     @Override
     public ClienteResponseDTO create(@Valid ClienteDTO dto) {
         HashService hash = new HashServiceImpl();
@@ -53,11 +58,21 @@ public class ClienteServiceImpl implements ClienteService {
 
         usuarioRepository.persist(usuario);
 
+        Endereco endereco = new Endereco();
+        endereco.setBairro(dto.bairro());
+        endereco.setComplemento(dto.complemento());
+        endereco.setLocalidade(dto.localidade());
+        endereco.setLogradouro(dto.logradouro());
+        endereco.setUf(dto.uf());
+
+        enderecoRepository.persist(endereco);
+
         Cliente cliente = new Cliente();
         cliente.setCep(dto.cep());
         cliente.setCpf(dto.cpf());
         cliente.setNome(dto.nome());
         cliente.setUsuario(usuario);
+        cliente.setEndereco(endereco);
 
         clienteRepository.persist(cliente);
 
