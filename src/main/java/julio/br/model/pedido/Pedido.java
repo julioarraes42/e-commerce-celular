@@ -11,6 +11,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import julio.br.model.Cliente;
 import julio.br.model.DefaultEntity;
+import julio.br.model.FormaPagamento;
 
 @Entity
 public class Pedido extends DefaultEntity {
@@ -28,6 +29,7 @@ public class Pedido extends DefaultEntity {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "id_pedido")
     private List<ItemPedido> itens;
+
 
     public LocalDateTime getDataPedido() {
         return dataPedido;
