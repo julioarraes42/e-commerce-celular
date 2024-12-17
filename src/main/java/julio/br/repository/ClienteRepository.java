@@ -23,4 +23,36 @@ public class ClienteRepository implements PanacheRepository<Cliente> {
     // return findAll();
     // }
 
+    public PanacheQuery<Cliente> findAllPaginado(int pageIndex, int pageSize) {
+        return findAll().page(pageIndex, pageSize);
+    }
+
+    public Cliente findByLogin(String login) {
+        return find("usuario.login", login).firstResult();
+    }
+
+    public Cliente findByEmail(String email) {
+        return find("email", email).firstResult();
+    }
+
+    public Cliente findByCpf(String cpf) {
+        return find("cpf", cpf).firstResult();
+    }
+
+    public Cliente findByUsername(String username) {
+
+        if (username == null){
+            return null;
+        }
+        return find("usuario.username", username).firstResult();
+    }
+
+    public Cliente findByUsernameAndSenha(String username, String senha) {
+        return find("usuario.username = ?1 AND usuario.senha = ?2", username, senha).firstResult();
+    }
+
+    public Cliente findByIdUsuario(Long idUsuario){
+        return find("usuario.id", idUsuario).firstResult();
+    }
+
 }

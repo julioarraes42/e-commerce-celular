@@ -2,11 +2,16 @@ package julio.br.service;
 
 import java.util.List;
 
+import org.eclipse.microprofile.jwt.JsonWebToken;
+
 import io.quarkus.security.identity.SecurityIdentity;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
+import julio.br.dto.AlterarEmailDTO;
+import julio.br.dto.AlterarSenhaDTO;
+import julio.br.dto.AlterarUsernameDTO;
 import julio.br.dto.AutorizacaoUsuarioDTO;
 import julio.br.dto.FuncionarioDTO;
 import julio.br.dto.FuncionarioResponseDTO;
@@ -31,6 +36,10 @@ public class FuncionarioServiceImpl implements FuncionarioService {
 
     @Inject
     public UsuarioRepository usuarioRepository;
+
+    @Inject
+    private JsonWebToken tokenJwt;
+
 
     @Override
     public FuncionarioResponseDTO create(@Valid FuncionarioDTO dto) {
@@ -147,6 +156,64 @@ public class FuncionarioServiceImpl implements FuncionarioService {
     public FuncionarioResponseDTO findById(Long id) {
         Funcionario funcionario = funcionarioRepository.findById(id);
 
+        return FuncionarioResponseDTO.valueOff(funcionario);
+    }
+
+    @Override
+    @Transactional
+    public void alterarSenha(AlterarSenhaDTO dto) {
+        Usuario usuario = usuarioRepository.findById(Long.valueOf(tokenJwt.getClaim("id").toString()));
+
+        Funcionario funcionario = funcionarioRepository.findById(usuario.getId());
+
+        if(funcionario == null || !hashService.verificandoHash(dto.senhaAntiga(), funcionario.getUsuario().getSenha())){
+            throw new ValidationException("senhaAntiga", "Senha antiga não confere");
+        }
+
+        funcionario.getUsuario().setSenha(hashService.getHashSenha(dto.novaSenha()));
+        usuarioRepository.persist(funcionario.getUsuario());
+    }
+
+    @Override
+    @Transactional
+    public void alterarUsername(AlterarUsernameDTO dto) {
+        Usuario usuario = usuarioRepository.findById(Long.valueOf(tokenJwt.getClaim("id").toString()));
+
+        Funcionario funcionario = funcionarioRepository.findById(usuario.getId());
+
+        if (funcionario == null || !hashService.verificandoHash(dto.senha(), funcionario.getUsuario().getSenha())) {
+            throw new ValidationException("senhaAntiga", "Senha incorreta");
+        }
+
+        funcionario.getUsuario().setLogin(dto.usernameNovo());
+        usuarioRepository.persist(funcionario.getUsuario());
+    }
+
+    @Override
+    @Transactional
+    public void alterarEmail(AlterarEmailDTO dto) {
+        Usuario usuario = usuarioRepository.findById(Long.valueOf(tokenJwt.getClaim("id").toString()));
+
+        Funcionario funcionario = funcionarioRepository.findById(usuario.getId());
+
+        if (funcionario == null || !hashService.verificandoHash(dto.senha(), funcionario.getUsuario().getSenha())) {
+            throw new ValidationException("senhaAntiga", "Senha incorreta");
+        }
+
+        funcionario.getUsuario().setEmail(dto.emailNovo());
+        usuarioRepository.persist(funcionario.getUsuario());
+    }
+
+    @Override
+    @Transactional
+    public FuncionarioResponseDTO findMeuPerfil() {
+         Usuario usuario = usuarioRepository.findById(Long.valueOf(tokenJwt.getClaim("id").toString()));
+
+         Funcionario funcionario = funcionarioRepository.findById(usuario.getId());
+
+        if (funcionario == null) {
+            throw new ValidationException("Perfil","Cliente não encontrado");
+        }
         return FuncionarioResponseDTO.valueOff(funcionario);
     }
 

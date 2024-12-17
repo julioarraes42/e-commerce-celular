@@ -2,6 +2,7 @@ package julio.br.resource;
 
 import org.jboss.logging.Logger;
 
+import jakarta.annotation.security.RolesAllowed;
 // import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
@@ -18,6 +19,9 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.Response.Status;
+import julio.br.dto.AlterarEmailDTO;
+import julio.br.dto.AlterarSenhaDTO;
+import julio.br.dto.AlterarUsernameDTO;
 import julio.br.dto.ClienteDTO;
 import julio.br.service.ClienteService;
 
@@ -109,4 +113,58 @@ public class ClienteResource {
         return Response.noContent().build();
     }
 
+    @PATCH
+    @Path("/search/alterar-senha")
+    @RolesAllowed({"Cliente"})
+    public Response alterarSenha(AlterarSenhaDTO dto) {
+        try {
+            LOG.info("Senha alterada com sucesso");
+            clienteService.alterarSenha(dto);
+            return Response.status(Status.NO_CONTENT).build();
+        } catch (Exception e) {
+            LOG.error("Erro ao tentar alterar senha");
+            return Response.status(Status.NOT_FOUND).entity("Erro ao tentar alterar senha").build();
+        }
+    }
+
+    @PATCH
+    @Path("/search/alterar-email")
+    @RolesAllowed({"Cliente"})
+    public Response alterarEmail(AlterarEmailDTO dto) {
+        try {
+            LOG.info("Email alterado com sucesso.");            
+            clienteService.alterarEmail(dto);
+            return Response.status(Status.NO_CONTENT).build();
+        } catch (Exception e) {
+            LOG.error("Erro ao alterar email, cliente.", e);
+            return Response.status(Status.NOT_FOUND).entity("Erro ao tentar alterar Email").build();
+        }
+    }
+
+    @PATCH
+    @RolesAllowed({"Cliente"})
+    @Path("/search/alterar-username")
+    public Response alterarUsername(AlterarUsernameDTO dto) {
+        try {
+            LOG.info("Username alterado com sucesso.");
+            clienteService.alterarUsername(dto);
+            return Response.status(Status.NO_CONTENT).build();   
+        } catch (Exception e) {
+            LOG.error("Erro ao tentar alterar Username.", e);
+            return Response.status(Status.NOT_FOUND).entity("Erro ao tentar alterar Username").build();
+        }
+    }
+
+    @GET
+    @RolesAllowed({"Cliente"})
+    @Path("/search/meu-perfil")
+    public Response meuPerfil() {
+        try {
+            LOG.info("Buscando perfil do cliente logado");
+            return Response.ok(clienteService.findMeuPerfil()).build();
+        } catch (Exception e) {
+            LOG.error("Erro ao buscar perfil do cliente.", e);
+            return Response.status(Status.NOT_FOUND).entity("Erro ao buscar perfil do cliente.").build();
+        }
+    }
 }

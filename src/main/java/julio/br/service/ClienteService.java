@@ -3,6 +3,9 @@ package julio.br.service;
 import java.util.List;
 
 import jakarta.validation.Valid;
+import julio.br.dto.AlterarEmailDTO;
+import julio.br.dto.AlterarSenhaDTO;
+import julio.br.dto.AlterarUsernameDTO;
 import julio.br.dto.AutorizacaoUsuarioDTO;
 import julio.br.dto.ClienteDTO;
 import julio.br.dto.ClienteResponseDTO;
@@ -40,5 +43,14 @@ public interface ClienteService {
     public List<Venda> dadosClienteVenda();
 
     public void validarSenha(String senha);
+
+    
+    public UsuarioResponseDTO login(String username, String senha);
+
+    public void alterarSenha(AlterarSenhaDTO dto);
+    public void alterarUsername(AlterarUsernameDTO dto);
+    public void alterarEmail(AlterarEmailDTO dto);
+
+    public ClienteResponseDTO findMeuPerfil();
 
 }

@@ -58,6 +58,35 @@ public class AutorizacaoResource {
         }
     }
 
+    // @POST
+    // public Response login(AutorizacaoUsuarioDTO dto) {
+    //     try {
+    //         String hashSenha = hashService.getHashSenha(dto.senha());
+
+    //         UsuarioResponseDTO usuario = null;
+    
+    //         if(dto.perfil() == 2){
+    //             usuario = funcionarioService.login(dto.username(), hashSenha);
+    //         } else if (dto.perfil() == 1){
+    //             usuario = clienteService.login(dto.username(), hashSenha);
+    //         } else {
+    //             return Response.status(Status.NOT_FOUND).header("Perfil", "perfis: 1-c ou 2-f").build();
+    //         }
+    
+    //         if(usuario != null){
+    //             return Response.ok(usuario).header("Authorization", jwtService.generateJwt(dto, usuario))
+    //                             .status(Status.CREATED)
+    //                             .build();
+    //         } else {
+    //             return Response.status(Status.NOT_FOUND).build();
+    //         }
+    //     } catch (Exception e) {
+    //         LOG.error("Erro durante o login. Verifique seu username ou senha!");
+    //         throw new ValidationException("Verificando", "Erro durante o login. Verifique seu username ou senha! - Executando AuthResource_Login");
+    //     }
+        
+    // }
+
     @POST
     @Transactional
     @Path("/registrar")

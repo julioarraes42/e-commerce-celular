@@ -2,6 +2,7 @@ package julio.br.resource;
 
 import org.jboss.logging.Logger;
 
+import jakarta.annotation.security.RolesAllowed;
 // import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
@@ -19,6 +20,9 @@ import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.Response.Status;
+import julio.br.dto.AlterarEmailDTO;
+import julio.br.dto.AlterarSenhaDTO;
+import julio.br.dto.AlterarUsernameDTO;
 import julio.br.dto.FuncionarioDTO;
 import julio.br.service.FuncionarioService;
 
@@ -90,6 +94,61 @@ public class FuncionarioResource {
     @Path("/count")
     public long count() {
         return funcionarioService.count();
+    }
+
+        @PATCH
+    @Path("/search/alterar-senha")
+    @RolesAllowed({ "Funcionario" })
+    public Response alterarSenha(AlterarSenhaDTO dto) {
+        try {
+            LOG.info("Senha alterada com sucesso");
+            funcionarioService.alterarSenha(dto);
+            return Response.status(Status.NO_CONTENT).build();
+        } catch (Exception e) {
+            LOG.error("Erro ao tentar alterar senha");
+            return Response.status(Status.NOT_FOUND).entity("Erro ao tentar alterar senha").build();
+        }
+    }
+
+    @PATCH
+    @Path("/search/alterar-email")
+    @RolesAllowed({ "Funcionario" })
+    public Response alterarEmail(AlterarEmailDTO dto) {
+        try {
+            LOG.info("Email alterado com sucesso.");
+            funcionarioService.alterarEmail(dto);
+            return Response.status(Status.NO_CONTENT).build();
+        } catch (Exception e) {
+            LOG.error("Erro ao alterar email, cliente.", e);
+            return Response.status(Status.NOT_FOUND).entity("Erro ao tentar alterar Email").build();
+        }
+    }
+
+    @PATCH
+    @Path("/search/alterar-username")
+    @RolesAllowed({ "Funcionario" })
+    public Response alterarUsername(AlterarUsernameDTO dto) {
+        try {
+            LOG.info("Username alterado com sucesso.");
+            funcionarioService.alterarUsername(dto);
+            return Response.status(Status.NO_CONTENT).build();
+        } catch (Exception e) {
+            LOG.error("Erro ao tentar alterar Username.", e);
+            return Response.status(Status.NOT_FOUND).entity("Erro ao tentar alterar Username").build();
+        }
+    }
+
+    @GET
+    @Path("/search/meu-perfil")
+    @RolesAllowed({ "Funcionario" })
+    public Response meuPerfil() {
+        try {
+            LOG.info("Buscando perfil do funcionario logado");
+            return Response.ok(funcionarioService.findMeuPerfil()).build();
+        } catch (Exception e) {
+            LOG.error("Erro ao buscar perfil do funcionario.", e);
+            return Response.status(Status.NOT_FOUND).entity("Erro ao buscar perfil do funcionario.").build();
+        }
     }
 
 }

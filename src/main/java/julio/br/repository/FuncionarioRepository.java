@@ -23,4 +23,37 @@ public class FuncionarioRepository implements PanacheRepository<Funcionario> {
         return findAll();
     }
 
+    public PanacheQuery<Funcionario> findAllPaginado(int pageIndex, int pageSize) {
+        return findAll().page(pageIndex, pageSize);
+    }
+
+    public Funcionario findByLogin(String login) {
+        return find("usuario.login", login).firstResult();
+    }
+
+    public Funcionario findByEmail(String email) {
+        return find("email", email).firstResult();
+    }
+
+    public Funcionario findByCpf(String cpf) {
+        return find("cpf", cpf).firstResult();
+    }
+
+    public Funcionario findByUsername(String username) {
+
+        if (username == null){
+            return null;
+        }
+        return find("usuario.username", username).firstResult();
+    }
+
+    public Funcionario findByUsernameAndSenha(String username, String senha) {
+        return find("usuario.username = ?1 AND usuario.senha = ?2", username, senha).firstResult();
+    }
+
+    public Funcionario findByIdUsuario(Long idUsuario){
+        return find("usuario.id", idUsuario).firstResult();
+    }
+
+
 }

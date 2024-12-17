@@ -31,4 +31,9 @@ public class HashServiceImpl implements HashService {
         }
     }
 
+    @Override
+    public boolean verificandoHash(String senha, String hash) {
+        return getHashSenha(senha).equals(hash);
+    }
+
 }

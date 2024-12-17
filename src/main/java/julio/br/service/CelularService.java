@@ -4,8 +4,13 @@ import java.time.LocalDate;
 import java.util.List;
 
 import jakarta.validation.Valid;
+import julio.br.dto.AlterarEmailDTO;
+import julio.br.dto.AlterarSenhaDTO;
+import julio.br.dto.AlterarUsernameDTO;
 import julio.br.dto.CelularDTO;
 import julio.br.dto.CelularResponseDTO;
+import julio.br.dto.ClienteResponseDTO;
+import julio.br.dto.UsuarioResponseDTO;
 
 public interface CelularService {
 
@@ -42,4 +47,6 @@ public interface CelularService {
     public void adicionarEstoque(Long id, int quantidade);
 
     public void diminuirEstoque(Long id, int quantidade);
+
+
 }

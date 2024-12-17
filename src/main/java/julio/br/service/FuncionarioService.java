@@ -3,6 +3,9 @@ package julio.br.service;
 import java.util.List;
 
 import jakarta.validation.Valid;
+import julio.br.dto.AlterarEmailDTO;
+import julio.br.dto.AlterarSenhaDTO;
+import julio.br.dto.AlterarUsernameDTO;
 import julio.br.dto.AutorizacaoUsuarioDTO;
 import julio.br.dto.FuncionarioDTO;
 import julio.br.dto.FuncionarioResponseDTO;
@@ -30,4 +33,10 @@ public interface FuncionarioService {
     public void validarSenha(String senha);
 
     public long count();
+
+    public void alterarSenha(AlterarSenhaDTO dto);
+    public void alterarUsername(AlterarUsernameDTO dto);
+    public void alterarEmail(AlterarEmailDTO dto);
+
+    public FuncionarioResponseDTO findMeuPerfil();
 }

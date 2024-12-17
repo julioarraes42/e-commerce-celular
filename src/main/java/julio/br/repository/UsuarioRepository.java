@@ -11,4 +11,12 @@ public class UsuarioRepository implements PanacheRepository<Usuario> {
         return find("login = ?1", login).firstResult();
     }
 
+    public Usuario findByNomeAndSenha(String login, String senha) {
+        return find("login = ?1 and senha = ?2", login, senha).firstResult();
+    }
+
+    public Usuario findById(Long id){
+        return find("id", id).firstResult();
+    }
+
 }
