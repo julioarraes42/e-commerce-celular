@@ -6,5 +6,5 @@ public record SerieDTO(
                 Long id,
                 String nome,
                 LocalDate anoLancamento,
-                LinhaDTO linha) {
+                Long linha) {
 }

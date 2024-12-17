@@ -38,4 +38,28 @@ public class SerieResource {
         return Response.ok(serieService.count()).build();
     }
 
+    // @POST
+    // @RolesAllowed("Funcionario")
+    // public Response create(SerieDTO dto) {
+    //     return Response.ok(serieService.create(dto)).build();
+    // }
+
+    // @PUT
+    // @Path("/{id}")
+    // @RolesAllowed("Funcionario")
+    // public Response update(Long id, SerieDTO dto) {
+    //     serieService.update(id, dto);
+    //     return Response.ok().build();
+    // }
+
+    // @DELETE
+    // @Path("/{id}")
+    // @RolesAllowed("Funcionario")
+    // public Response delete(Long id) {
+    //     serieService.delete(id);
+    //     return Response.ok().build();
+    // }
+
+    
+
 }

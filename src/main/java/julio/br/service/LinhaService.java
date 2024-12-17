@@ -12,4 +12,10 @@ public interface LinhaService {
 
     public Long count();
 
+    public LinhaResponseDTO create(LinhaResponseDTO dto);
+
+    public void update(Long id, LinhaResponseDTO dto);
+
+    public void delete(Long id);
+
 }

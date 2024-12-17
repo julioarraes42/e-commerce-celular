@@ -38,4 +38,27 @@ public class LinhaResponse {
         return Response.ok(linhaService.count()).build();
     }
 
+    // @POST
+    // @RolesAllowed("Funcionario") 
+    // public Response create(LinhaDTO dto) {
+    //     return Response.ok(linhaService.create(dto)).build();
+    // }
+
+    // @PUT
+    // @Path("/{id}")
+    // @RolesAllowed("Funcionario")
+    // public Response update(Long id, LinhaDTO dto) {
+    //     linhaService.update(id, dto);
+    //     return Response.ok().build();
+    // }
+
+    // @DELETE
+    // @Path("/{id}")
+    // @RolesAllowed("Funcionario")
+    // public Response delete(Long id) {
+    //     linhaService.delete(id);
+    //     return Response.ok().build();
+    // }
+    
+
 }

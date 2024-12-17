@@ -65,7 +65,7 @@ public class SensorResource {
     // @RolesAllowed("Funcionario")
     @Transactional
     @Path("/{id}")
-    public Response delet(@PathParam("id") Long id) {
+    public Response delete(@PathParam("id") Long id) {
         sensorService.delete(id);
         return Response.status(Status.NO_CONTENT).build();
     }

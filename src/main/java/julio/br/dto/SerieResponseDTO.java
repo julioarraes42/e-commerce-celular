@@ -10,7 +10,8 @@ public record SerieResponseDTO(
         LocalDate anoLancamento,
         LinhaResponseDTO linha) {
     public static SerieResponseDTO valuesOf(Serie serie) {
-        return new SerieResponseDTO(serie.getId(),
+        return new SerieResponseDTO(
+            serie.getId(),
                 serie.getNome(),
                 serie.getAnoLancamento(),
                 LinhaResponseDTO.valuesOf(serie.getLinha()));

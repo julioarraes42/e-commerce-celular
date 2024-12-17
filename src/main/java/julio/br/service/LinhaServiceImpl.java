@@ -35,4 +35,27 @@ public class LinhaServiceImpl implements LinhaService {
         return LinhaResponseDTO.valuesOf(linha);
     }
 
+    @Override
+    public LinhaResponseDTO create(LinhaResponseDTO dto) {
+        Linha linha = new Linha();
+        linha.setNome(dto.nome());
+        linha.setAnoLancamento(dto.anoLancamento());
+        linhaRepository.persist(linha);
+        return LinhaResponseDTO.valuesOf(linha);
+    }
+
+    @Override
+    public void update(Long id, LinhaResponseDTO dto) {
+        Linha linha = linhaRepository.findById(id);
+        linha.setNome(dto.nome());
+        linha.setAnoLancamento(dto.anoLancamento());
+        linhaRepository.persist(linha);
+    }
+
+    @Override
+    public void delete(Long id) {
+        Linha linha = linhaRepository.findById(id);
+        linhaRepository.delete(linha);
+    }
+
 }

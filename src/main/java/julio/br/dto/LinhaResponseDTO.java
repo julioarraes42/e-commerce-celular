@@ -9,7 +9,8 @@ public record LinhaResponseDTO(
         String nome,
         LocalDate anoLancamento) {
     public static LinhaResponseDTO valuesOf(Linha linha) {
-        return new LinhaResponseDTO(linha.getId(),
+        return new LinhaResponseDTO(
+            linha.getId(),
                 linha.getNome(),
                 linha.getAnoLancamento());
     }
