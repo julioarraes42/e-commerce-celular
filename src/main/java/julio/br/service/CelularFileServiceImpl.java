@@ -31,10 +31,9 @@ public class CelularFileServiceImpl implements FileService {
     @Override
     @Transactional
     public void salvar(Long id, String nomeImagem, byte[] imagem) throws IOException {
-        Celular celular = celularRepository.findById(id);
         try {
             String novoNomeImagem = salvarImagem(nomeImagem, imagem);
-            celular.setNomeImagem(novoNomeImagem);
+            celularRepository.findById(id).setNomeImagem(novoNomeImagem);
         } catch (IOException e) {
             throw new ValidationException("imagem", e.getMessage());
         }
@@ -52,16 +51,10 @@ public class CelularFileServiceImpl implements FileService {
             throw new IOException("tamanho máximo 10mb.");
         }
 
-                // criar pasta quando nao existir
-                File diretorio = new File(PATH_USER);
-                if (!diretorio.exists()) 
-                    diretorio.mkdirs();
-
-        // Verifica se o nome da imagem já contém uma extensão válida
-        String extensao = mimeType.substring(mimeType.lastIndexOf("/") + 1);
-        if (!nomeImagem.endsWith("." + extensao)) {
-            nomeImagem += "." + extensao;
-        }
+        // criar pasta quando nao existir
+        File diretorio = new File(PATH_USER);
+        if (!diretorio.exists())
+            diretorio.mkdirs();
 
         String path = PATH_USER + nomeImagem;
 
@@ -77,6 +70,10 @@ public class CelularFileServiceImpl implements FileService {
             fos.flush();
             fos.close();
         }
+
+        System.out.println(nomeImagem);
+        System.out.println(path);
+        System.out.println(PATH_USER);
 
         return nomeImagem;
     }
