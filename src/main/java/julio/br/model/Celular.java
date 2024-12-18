@@ -3,6 +3,7 @@ package julio.br.model;
 import java.time.LocalDate;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
@@ -29,7 +30,7 @@ public class Celular extends DefaultEntity {
     @ManyToMany
     private List<PortaSlot> portaSlot;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.PERSIST)
     private List<Sensor> sensor;
 
     private String marca;

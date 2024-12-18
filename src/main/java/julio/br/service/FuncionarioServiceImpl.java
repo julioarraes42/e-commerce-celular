@@ -40,7 +40,6 @@ public class FuncionarioServiceImpl implements FuncionarioService {
     @Inject
     private JsonWebToken tokenJwt;
 
-
     @Override
     public FuncionarioResponseDTO create(@Valid FuncionarioDTO dto) {
         Usuario usuario = new Usuario();
@@ -166,7 +165,8 @@ public class FuncionarioServiceImpl implements FuncionarioService {
 
         Funcionario funcionario = funcionarioRepository.findById(usuario.getId());
 
-        if(funcionario == null || !hashService.verificandoHash(dto.senhaAntiga(), funcionario.getUsuario().getSenha())){
+        if (funcionario == null
+                || !hashService.verificandoHash(dto.senhaAntiga(), funcionario.getUsuario().getSenha())) {
             throw new ValidationException("senhaAntiga", "Senha antiga não confere");
         }
 
@@ -207,12 +207,12 @@ public class FuncionarioServiceImpl implements FuncionarioService {
     @Override
     @Transactional
     public FuncionarioResponseDTO findMeuPerfil() {
-         Usuario usuario = usuarioRepository.findById(Long.valueOf(tokenJwt.getClaim("id").toString()));
+        Usuario usuario = usuarioRepository.findById(Long.valueOf(tokenJwt.getClaim("id").toString()));
 
-         Funcionario funcionario = funcionarioRepository.findById(usuario.getId());
+        Funcionario funcionario = funcionarioRepository.findById(usuario.getId());
 
         if (funcionario == null) {
-            throw new ValidationException("Perfil","Cliente não encontrado");
+            throw new ValidationException("Perfil", "Cliente não encontrado");
         }
         return FuncionarioResponseDTO.valueOff(funcionario);
     }
