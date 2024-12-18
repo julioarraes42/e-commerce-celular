@@ -10,6 +10,8 @@ C:\Users\admin\Desktop\e-commerce-celular\src\main\java\julio\br\dto\CelularVend
 C:\Users\admin\Desktop\e-commerce-celular\src\main\java\julio\br\dto\CelularVendaResponseDTO.java
 C:\Users\admin\Desktop\e-commerce-celular\src\main\java\julio\br\dto\ClienteDTO.java
 C:\Users\admin\Desktop\e-commerce-celular\src\main\java\julio\br\dto\ClienteResponseDTO.java
+C:\Users\admin\Desktop\e-commerce-celular\src\main\java\julio\br\dto\EnderecoDTO.java
+C:\Users\admin\Desktop\e-commerce-celular\src\main\java\julio\br\dto\EnderecoResponseDTO.java
 C:\Users\admin\Desktop\e-commerce-celular\src\main\java\julio\br\dto\FuncionarioDTO.java
 C:\Users\admin\Desktop\e-commerce-celular\src\main\java\julio\br\dto\FuncionarioResponseDTO.java
 C:\Users\admin\Desktop\e-commerce-celular\src\main\java\julio\br\dto\LinhaDTO.java
@@ -62,7 +64,9 @@ C:\Users\admin\Desktop\e-commerce-celular\src\main\java\julio\br\repository\Celu
 C:\Users\admin\Desktop\e-commerce-celular\src\main\java\julio\br\repository\ClienteRepository.java
 C:\Users\admin\Desktop\e-commerce-celular\src\main\java\julio\br\repository\EnderecoRepository.java
 C:\Users\admin\Desktop\e-commerce-celular\src\main\java\julio\br\repository\FuncionarioRepository.java
+C:\Users\admin\Desktop\e-commerce-celular\src\main\java\julio\br\repository\ItemPedidoRepository.java
 C:\Users\admin\Desktop\e-commerce-celular\src\main\java\julio\br\repository\LinhaRepository.java
+C:\Users\admin\Desktop\e-commerce-celular\src\main\java\julio\br\repository\PedidoRepository.java
 C:\Users\admin\Desktop\e-commerce-celular\src\main\java\julio\br\repository\PortaSlotRepository.java
 C:\Users\admin\Desktop\e-commerce-celular\src\main\java\julio\br\repository\ProcessadorRepository.java
 C:\Users\admin\Desktop\e-commerce-celular\src\main\java\julio\br\repository\SensorRepository.java
@@ -99,6 +103,8 @@ C:\Users\admin\Desktop\e-commerce-celular\src\main\java\julio\br\service\JwtServ
 C:\Users\admin\Desktop\e-commerce-celular\src\main\java\julio\br\service\JwtServiceImpl.java
 C:\Users\admin\Desktop\e-commerce-celular\src\main\java\julio\br\service\LinhaService.java
 C:\Users\admin\Desktop\e-commerce-celular\src\main\java\julio\br\service\LinhaServiceImpl.java
+C:\Users\admin\Desktop\e-commerce-celular\src\main\java\julio\br\service\PedidoService.java
+C:\Users\admin\Desktop\e-commerce-celular\src\main\java\julio\br\service\PedidoServiceImpl.java
 C:\Users\admin\Desktop\e-commerce-celular\src\main\java\julio\br\service\PixPayloadGenerator.java
 C:\Users\admin\Desktop\e-commerce-celular\src\main\java\julio\br\service\PortaSlotService.java
 C:\Users\admin\Desktop\e-commerce-celular\src\main\java\julio\br\service\PortaSlotServiceImpl.java
