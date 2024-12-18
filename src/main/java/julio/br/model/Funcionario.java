@@ -1,5 +1,6 @@
 package julio.br.model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
@@ -20,7 +21,7 @@ public class Funcionario extends DefaultEntity {
         this.cnpj = cnpj;
     }
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.REMOVE, orphanRemoval = true)
     @JoinColumn(name = "id_usuario")
     private Usuario usuario;
 

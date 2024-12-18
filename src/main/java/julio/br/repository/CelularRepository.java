@@ -10,6 +10,7 @@ import julio.br.model.Camera;
 import julio.br.model.Celular;
 import julio.br.model.PortaSlot;
 import julio.br.model.Processador;
+import julio.br.model.Sensor;
 import julio.br.model.Tela;
 
 @ApplicationScoped
@@ -30,7 +31,7 @@ public class CelularRepository implements PanacheRepository<Celular> {
     }
 
     // public PanacheQuery<Celular> findAllPaginado() {
-    //     return findAll();
+    // return findAll();
     // }
 
     public Celular findByNomeCompleto(String nome) {
@@ -59,6 +60,10 @@ public class CelularRepository implements PanacheRepository<Celular> {
 
     public List<Celular> findByPortaSlot(PortaSlot portaSlot) {
         return find("SELECT c FROM Celular c JOIN c.portaSlot cam WHERE cam = ?1", portaSlot).list();
+    }
+
+    public List<Celular> findBySensor(Sensor sensor) {
+        return find("SELECT c FROM Celular c JOIN c.sensor cam WHERE cam = ?1", sensor).list();
     }
 
     public List<Celular> findByProcessador(Processador processador) {

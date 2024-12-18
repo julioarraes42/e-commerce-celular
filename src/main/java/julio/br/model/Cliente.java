@@ -1,5 +1,6 @@
 package julio.br.model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
@@ -11,13 +12,9 @@ public class Cliente extends DefaultEntity {
     private String cep;
     private String cpf;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.REMOVE, orphanRemoval = true)
     @JoinColumn(name = "id_usuario")
     private Usuario usuario;
-
-    @OneToOne
-    @JoinColumn(name = "id_endereco")
-    private Endereco endereco;
 
     public String getNome() {
         return nome;
@@ -49,14 +46,6 @@ public class Cliente extends DefaultEntity {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
-    }
-
-    public Endereco getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
     }
 
 }

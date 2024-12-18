@@ -28,8 +28,6 @@ public interface ClienteService {
 
     public void alterarSenha(String senhaAntiga, String senha);
 
-    public void definirEndereco(Long idCliente, EnderecoDTO endereco);
-
     public void validarLogin(String login, String senha);
 
     public ClienteResponseDTO findById(Long id);
@@ -37,8 +35,6 @@ public interface ClienteService {
     public List<ClienteResponseDTO> findAll(int page, int pageSize);
 
     public List<ClienteResponseDTO> findByNome(String nome, int page, int pageSize);
-
-    public EnderecoResponseDTO findEndereco(Long id);
 
     public Long count();
 

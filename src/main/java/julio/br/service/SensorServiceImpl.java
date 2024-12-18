@@ -7,7 +7,9 @@ import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import julio.br.dto.SensorDTO;
 import julio.br.dto.SensorResponseDTO;
+import julio.br.model.Celular;
 import julio.br.model.Sensor;
+import julio.br.repository.CelularRepository;
 import julio.br.repository.SensorRepository;
 
 @ApplicationScoped
@@ -15,6 +17,9 @@ public class SensorServiceImpl implements SensorService {
 
     @Inject
     public SensorRepository sensorRepository;
+
+    @Inject
+    public CelularRepository celularRepository;
 
     @Override
     public List<SensorResponseDTO> findAll() {
@@ -49,14 +54,16 @@ public class SensorServiceImpl implements SensorService {
     }
 
     @Override
+    @Transactional
     public void delete(Long id) {
-        sensorRepository.deleteById(id);
-    }
-
-    @Override
-    public SensorResponseDTO findById(Long id) {
         Sensor sensor = sensorRepository.findById(id);
-        return SensorResponseDTO.valuesOf(sensor);
+
+        List<Celular> celulares = celularRepository.findBySensor(sensor);
+        for (Celular celular : celulares) {
+            celular.getSensor().remove(sensor);
+            celularRepository.persist(celular);
+        }
+        sensorRepository.deleteById(id);
     }
 
 }
