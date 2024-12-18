@@ -20,11 +20,14 @@ public record CelularDTO(
 
         Long idSerie,
 
-        @NotBlank(message = "A marca não pode ser nulo ou vazio") @Size(min = 4, max = 60, message = "O tamanho do nome deve possuir de 4 a 60 caracteres.") String marca,
+        @NotBlank(message = "A marca não pode ser nulo ou vazio") @Size(min = 4, max = 60, message = "O tamanho do nome deve possuir de 4 a 60 caracteres.") 
+        String marca,
 
-        @NotBlank(message = "O nome não pode ser nulo ou vazio") @Size(min = 4, max = 60, message = "O tamanho do nome deve possuir de 4 a 60 caracteres.") String nome,
+        @NotBlank(message = "O nome não pode ser nulo ou vazio") @Size(min = 4, max = 60, message = "O tamanho do nome deve possuir de 4 a 60 caracteres.") 
+        String nome,
 
-        @Past(message = "data invalida ") LocalDate anoLancamento,
+        @Past(message = "data invalida ") 
+        LocalDate anoLancamento,
 
         Float armazenamento,
 
