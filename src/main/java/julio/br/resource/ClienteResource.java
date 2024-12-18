@@ -23,6 +23,7 @@ import julio.br.dto.AlterarEmailDTO;
 import julio.br.dto.AlterarSenhaDTO;
 import julio.br.dto.AlterarUsernameDTO;
 import julio.br.dto.ClienteDTO;
+import julio.br.dto.EnderecoDTO;
 import julio.br.service.ClienteService;
 
 @Produces(MediaType.APPLICATION_JSON)
@@ -115,7 +116,7 @@ public class ClienteResource {
 
     @PATCH
     @Path("/search/alterar-senha")
-    @RolesAllowed({"Cliente"})
+    @RolesAllowed({ "Cliente" })
     public Response alterarSenha(AlterarSenhaDTO dto) {
         try {
             LOG.info("Senha alterada com sucesso");
@@ -129,10 +130,10 @@ public class ClienteResource {
 
     @PATCH
     @Path("/search/alterar-email")
-    @RolesAllowed({"Cliente"})
+    @RolesAllowed({ "Cliente" })
     public Response alterarEmail(AlterarEmailDTO dto) {
         try {
-            LOG.info("Email alterado com sucesso.");            
+            LOG.info("Email alterado com sucesso.");
             clienteService.alterarEmail(dto);
             return Response.status(Status.NO_CONTENT).build();
         } catch (Exception e) {
@@ -142,13 +143,13 @@ public class ClienteResource {
     }
 
     @PATCH
-    @RolesAllowed({"Cliente"})
+    @RolesAllowed({ "Cliente" })
     @Path("/search/alterar-username")
     public Response alterarUsername(AlterarUsernameDTO dto) {
         try {
             LOG.info("Username alterado com sucesso.");
             clienteService.alterarUsername(dto);
-            return Response.status(Status.NO_CONTENT).build();   
+            return Response.status(Status.NO_CONTENT).build();
         } catch (Exception e) {
             LOG.error("Erro ao tentar alterar Username.", e);
             return Response.status(Status.NOT_FOUND).entity("Erro ao tentar alterar Username").build();
@@ -156,7 +157,7 @@ public class ClienteResource {
     }
 
     @GET
-    @RolesAllowed({"Cliente"})
+    @RolesAllowed({ "Cliente" })
     @Path("/search/meu-perfil")
     public Response meuPerfil() {
         try {
@@ -166,5 +167,23 @@ public class ClienteResource {
             LOG.error("Erro ao buscar perfil do cliente.", e);
             return Response.status(Status.NOT_FOUND).entity("Erro ao buscar perfil do cliente.").build();
         }
+    }
+
+    @PATCH
+    @Transactional
+    @RolesAllowed({ "Cliente" })
+    @Path("/endereco/add/{id}")
+    public Response definirEndereco(@PathParam("id") Long id, EnderecoDTO dto) {
+        LOG.info("definindo enderco");
+        clienteService.definirEndereco(id, dto);
+        return Response.noContent().build();
+    }
+
+    @GET
+    @RolesAllowed({ "Cliente" })
+    @Path("/endereco/find/{id}")
+    public Response findEndereco(@PathParam("id") Long id) {
+        LOG.info("buscando endereco");
+        return Response.ok(clienteService.findEndereco(id)).build();
     }
 }

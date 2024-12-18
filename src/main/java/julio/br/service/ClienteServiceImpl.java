@@ -16,6 +16,8 @@ import julio.br.dto.AlterarUsernameDTO;
 import julio.br.dto.AutorizacaoUsuarioDTO;
 import julio.br.dto.ClienteDTO;
 import julio.br.dto.ClienteResponseDTO;
+import julio.br.dto.EnderecoDTO;
+import julio.br.dto.EnderecoResponseDTO;
 import julio.br.dto.UsuarioResponseDTO;
 import julio.br.model.Cliente;
 import julio.br.model.Endereco;
@@ -48,7 +50,7 @@ public class ClienteServiceImpl implements ClienteService {
     @Inject
     public EnderecoRepository enderecoRepository;
 
-        @Inject
+    @Inject
     public HashService hashService;
 
     @Inject
@@ -69,21 +71,11 @@ public class ClienteServiceImpl implements ClienteService {
 
         usuarioRepository.persist(usuario);
 
-        Endereco endereco = new Endereco();
-        endereco.setBairro(dto.bairro());
-        endereco.setComplemento(dto.complemento());
-        endereco.setLocalidade(dto.localidade());
-        endereco.setLogradouro(dto.logradouro());
-        endereco.setUf(dto.uf());
-
-        enderecoRepository.persist(endereco);
-
         Cliente cliente = new Cliente();
         cliente.setCep(dto.cep());
         cliente.setCpf(dto.cpf());
         cliente.setNome(dto.nome());
         cliente.setUsuario(usuario);
-        cliente.setEndereco(endereco);
 
         clienteRepository.persist(cliente);
 
@@ -242,7 +234,7 @@ public class ClienteServiceImpl implements ClienteService {
 
     @Override
     public void alterarUsername(AlterarUsernameDTO dto) {
-        
+
         Usuario usuario = usuarioRepository.findById(Long.valueOf(tokenJwt.getClaim("id").toString()));
 
         Cliente cliente = clienteRepository.findByIdUsuario(usuario.getId());
@@ -284,6 +276,29 @@ public class ClienteServiceImpl implements ClienteService {
         return ClienteResponseDTO.valueOff(cliente);
     }
 
-    
+    @Override
+    public void definirEndereco(Long idCliente, EnderecoDTO enderecoDTO) {
+
+        Endereco endereco = new Endereco();
+
+        endereco.setBairro(enderecoDTO.bairro());
+        endereco.setComplemento(enderecoDTO.complemento());
+        endereco.setLocalidade(enderecoDTO.localidade());
+        endereco.setLogradouro(enderecoDTO.logradouro());
+        endereco.setUf(enderecoDTO.uf());
+
+        enderecoRepository.persist(endereco);
+
+        clienteRepository.findById(idCliente).setEndereco(endereco);
+    }
+
+    @Override
+    public EnderecoResponseDTO findEndereco(Long id) {
+        Cliente cliente = clienteRepository.findById(id);
+
+        Endereco endereco = enderecoRepository.findById(cliente.getEndereco().getId());
+
+        return EnderecoResponseDTO.valueOff(endereco);
+    }
 
 }

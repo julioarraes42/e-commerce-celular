@@ -9,6 +9,8 @@ import julio.br.dto.AlterarUsernameDTO;
 import julio.br.dto.AutorizacaoUsuarioDTO;
 import julio.br.dto.ClienteDTO;
 import julio.br.dto.ClienteResponseDTO;
+import julio.br.dto.EnderecoDTO;
+import julio.br.dto.EnderecoResponseDTO;
 import julio.br.dto.UsuarioResponseDTO;
 import julio.br.model.Cliente;
 import julio.br.model.Venda;
@@ -26,6 +28,8 @@ public interface ClienteService {
 
     public void alterarSenha(String senhaAntiga, String senha);
 
+    public void definirEndereco(Long idCliente, EnderecoDTO endereco);
+
     public void validarLogin(String login, String senha);
 
     public ClienteResponseDTO findById(Long id);
@@ -33,6 +37,8 @@ public interface ClienteService {
     public List<ClienteResponseDTO> findAll(int page, int pageSize);
 
     public List<ClienteResponseDTO> findByNome(String nome, int page, int pageSize);
+
+    public EnderecoResponseDTO findEndereco(Long id);
 
     public Long count();
 
@@ -44,11 +50,12 @@ public interface ClienteService {
 
     public void validarSenha(String senha);
 
-    
     public UsuarioResponseDTO login(String username, String senha);
 
     public void alterarSenha(AlterarSenhaDTO dto);
+
     public void alterarUsername(AlterarUsernameDTO dto);
+
     public void alterarEmail(AlterarEmailDTO dto);
 
     public ClienteResponseDTO findMeuPerfil();
