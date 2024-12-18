@@ -169,21 +169,21 @@ public class ClienteResource {
         }
     }
 
-    @PATCH
-    @Transactional
-    @RolesAllowed({ "Cliente" })
-    @Path("/endereco/add/{id}")
-    public Response definirEndereco(@PathParam("id") Long id, EnderecoDTO dto) {
-        LOG.info("definindo enderco");
-        clienteService.definirEndereco(id, dto);
-        return Response.noContent().build();
-    }
+    // @PATCH
+    // @Transactional
+    // @RolesAllowed({ "Cliente" })
+    // @Path("/endereco/add/{id}")
+    // public Response definirEndereco(@PathParam("id") Long id, EnderecoDTO dto) {
+    //     LOG.info("definindo enderco");
+    //     clienteService.definirEndereco(id, dto);
+    //     return Response.noContent().build();
+    // }
 
-    @GET
-    @RolesAllowed({ "Cliente" })
-    @Path("/endereco/find/{id}")
-    public Response findEndereco(@PathParam("id") Long id) {
-        LOG.info("buscando endereco");
-        return Response.ok(clienteService.findEndereco(id)).build();
-    }
+    // @GET
+    // @RolesAllowed({ "Cliente" })
+    // @Path("/endereco/find/{id}")
+    // public Response findEndereco(@PathParam("id") Long id) {
+    //     LOG.info("buscando endereco");
+    //     return Response.ok(clienteService.findEndereco(id)).build();
+    // }
 }
