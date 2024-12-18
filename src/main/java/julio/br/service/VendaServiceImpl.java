@@ -1,5 +1,6 @@
 package julio.br.service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +14,7 @@ import julio.br.model.Celular;
 import julio.br.model.CelularVenda;
 import julio.br.model.Cliente;
 import julio.br.model.DefaultEntity;
+import julio.br.model.FormaPagamento;
 import julio.br.model.Venda;
 import julio.br.repository.CelularRepository;
 import julio.br.repository.CelularVendaRepository;
@@ -60,9 +62,9 @@ public class VendaServiceImpl implements VendaService {
         venda.setCliente(cliente);
 
         venda.setCliente(clienteRepository.findById(id));
-        venda.setData(dto.data());
+        venda.setData(LocalDateTime.now());
         venda.setValorFinal(calcularValorFinal(dto));
-        venda.setFormaPagamento(dto.formaPagamento());
+        venda.setFormaPagamento(FormaPagamento.values()[dto.formaPagamento()]);
 
         vendaRepository.persist(venda);
 

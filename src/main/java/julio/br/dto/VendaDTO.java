@@ -6,8 +6,7 @@ import java.util.List;
 import julio.br.model.FormaPagamento;
 
 public record VendaDTO(
-                List<CelularVendaDTO> celulares,
-                LocalDateTime data,
-                FormaPagamento formaPagamento) {
+        List<CelularVendaDTO> celulares,
+        int formaPagamento) {
 
 }
