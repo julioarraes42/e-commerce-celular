@@ -276,29 +276,4 @@ public class ClienteServiceImpl implements ClienteService {
         return ClienteResponseDTO.valueOff(cliente);
     }
 
-    @Override
-    public void definirEndereco(Long idCliente, EnderecoDTO enderecoDTO) {
-
-        Endereco endereco = new Endereco();
-
-        endereco.setBairro(enderecoDTO.bairro());
-        endereco.setComplemento(enderecoDTO.complemento());
-        endereco.setLocalidade(enderecoDTO.localidade());
-        endereco.setLogradouro(enderecoDTO.logradouro());
-        endereco.setUf(enderecoDTO.uf());
-
-        enderecoRepository.persist(endereco);
-
-        clienteRepository.findById(idCliente).setEndereco(endereco);
-    }
-
-    @Override
-    public EnderecoResponseDTO findEndereco(Long id) {
-        Cliente cliente = clienteRepository.findById(id);
-
-        Endereco endereco = enderecoRepository.findById(cliente.getEndereco().getId());
-
-        return EnderecoResponseDTO.valueOff(endereco);
-    }
-
 }

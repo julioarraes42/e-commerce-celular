@@ -15,10 +15,6 @@ public class Cliente extends DefaultEntity {
     @JoinColumn(name = "id_usuario")
     private Usuario usuario;
 
-    @OneToOne
-    @JoinColumn(name = "id_endereco")
-    private Endereco endereco;
-
     public String getNome() {
         return nome;
     }
@@ -49,14 +45,6 @@ public class Cliente extends DefaultEntity {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
-    }
-
-    public Endereco getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
     }
 
 }
