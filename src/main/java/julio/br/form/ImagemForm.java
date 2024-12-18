@@ -7,8 +7,11 @@ import jakarta.ws.rs.core.MediaType;
 
 public class ImagemForm {
 
-    @FormParam("nomeImagem")
+    @FormParam("id")
     @PartType(MediaType.TEXT_PLAIN)
+    private Long id;
+
+    @FormParam("nomeImagem")
     private String nomeImagem;
 
     @FormParam("imagem")
@@ -29,6 +32,14 @@ public class ImagemForm {
 
     public void setImagem(byte[] imagem) {
         this.imagem = imagem;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
 }

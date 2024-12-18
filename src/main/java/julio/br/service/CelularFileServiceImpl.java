@@ -4,6 +4,7 @@ package julio.br.service;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.Files;
 // import java.nio.file.Files;
 import java.util.Arrays;
 import java.util.List;
@@ -29,10 +30,11 @@ public class CelularFileServiceImpl implements FileService {
 
     @Override
     @Transactional
-    public void salvar(Long id, String nomeImagem, byte[] imagem) {
+    public void salvar(Long id, String nomeImagem, byte[] imagem) throws IOException {
         Celular celular = celularRepository.findById(id);
         try {
-            celular.setNomeImagem(salvarImagem(nomeImagem, imagem));
+            String novoNomeImagem = salvarImagem(nomeImagem, imagem);
+            celular.setNomeImagem(novoNomeImagem);
         } catch (IOException e) {
             throw new ValidationException("imagem", e.getMessage());
         }
@@ -42,34 +44,41 @@ public class CelularFileServiceImpl implements FileService {
         Tika tika = new Tika();
         String mimeType = tika.detect(imagem);
         List<String> listMimeType = Arrays.asList("image/jpg", "image/gif", "image/png", "image/jpeg", "image/jfif");
-        if (mimeType == null || !listMimeType.contains(mimeType))
+        if (mimeType == null || !listMimeType.contains(mimeType)) {
             throw new IOException("imagem não suportado.");
+        }
 
         if (imagem.length > 1024 * 1024 * 10) {
             throw new IOException("tamanho máximo 10mb.");
         }
 
-        File diretorio = new File(PATH_USER);
-        if (!diretorio.exists())
-            diretorio.mkdirs();
+                // criar pasta quando nao existir
+                File diretorio = new File(PATH_USER);
+                if (!diretorio.exists()) 
+                    diretorio.mkdirs();
 
-        String nomeArquivo = UUID.randomUUID()
-                + "."
-                + mimeType.substring(mimeType.lastIndexOf("/") + 1);
-        String path = PATH_USER + nomeArquivo;
+        // Verifica se o nome da imagem já contém uma extensão válida
+        String extensao = mimeType.substring(mimeType.lastIndexOf("/") + 1);
+        if (!nomeImagem.endsWith("." + extensao)) {
+            nomeImagem += "." + extensao;
+        }
+
+        String path = PATH_USER + nomeImagem;
 
         File file = new File(path);
-        if (file.exists())
+        if (file.exists()) {
             throw new IOException("Este arquivo ja existe");
+        }
 
         file.createNewFile();
 
-        FileOutputStream fos = new FileOutputStream(file);
-        fos.write(imagem);
-        fos.flush();
-        fos.close();
+        try (FileOutputStream fos = new FileOutputStream(file)) {
+            fos.write(imagem);
+            fos.flush();
+            fos.close();
+        }
 
-        return nomeArquivo;
+        return nomeImagem;
     }
 
     @Override

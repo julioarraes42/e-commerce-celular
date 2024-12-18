@@ -1,5 +1,6 @@
 package julio.br.resource;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -134,17 +135,22 @@ public class CelularResource {
     @DELETE
     @Transactional
     @Path("/{id}")
-    public Response delet(@PathParam("id") Long id) {
+    public Response delete(@PathParam("id") Long id) {
         celularService.delete(id);
         return Response.status(Status.NO_CONTENT).build();
     }
 
     @PATCH
-    @Path("/{id}/imagen/upload")
+    @Path("/imagen/upload")
     @Consumes(MediaType.MULTIPART_FORM_DATA)
-    public Response upload(@PathParam("id") Long id, @MultipartForm ImagemForm form) {
-        fileService.salvar(id, form.getNomeImagem(), form.getImagem());
-        return Response.noContent().build();
+    public Response salvarImagem(@MultipartForm ImagemForm form) {
+
+        try {
+            fileService.salvar(form.getId(), form.getNomeImagem(), form.getImagem());
+            return Response.noContent().build();
+        } catch (IOException e) {
+            return Response.status(Status.CONFLICT).build();
+        }
     }
 
     @GET
