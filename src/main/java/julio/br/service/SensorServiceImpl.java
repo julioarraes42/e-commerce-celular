@@ -31,6 +31,12 @@ public class SensorServiceImpl implements SensorService {
     }
 
     @Override
+    public SensorResponseDTO findById(Long id) {
+        Sensor sensor = sensorRepository.findById(id);
+        return SensorResponseDTO.valuesOf(sensor);
+    }
+
+    @Override
     public Long count() {
         return sensorRepository.count();
     }

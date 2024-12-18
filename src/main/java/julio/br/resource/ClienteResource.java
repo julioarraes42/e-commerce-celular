@@ -168,4 +168,25 @@ public class ClienteResource {
             return Response.status(Status.NOT_FOUND).entity("Erro ao buscar perfil do cliente.").build();
         }
     }
+<<<<<<< HEAD
+=======
+
+    // @PATCH
+    // @Transactional
+    // @RolesAllowed({ "Cliente" })
+    // @Path("/endereco/add/{id}")
+    // public Response definirEndereco(@PathParam("id") Long id, EnderecoDTO dto) {
+    //     LOG.info("definindo enderco");
+    //     clienteService.definirEndereco(id, dto);
+    //     return Response.noContent().build();
+    // }
+
+    // @GET
+    // @RolesAllowed({ "Cliente" })
+    // @Path("/endereco/find/{id}")
+    // public Response findEndereco(@PathParam("id") Long id) {
+    //     LOG.info("buscando endereco");
+    //     return Response.ok(clienteService.findEndereco(id)).build();
+    // }
+>>>>>>> 5351f74900122ca746ffc37ea7b16d0de40ed34d
 }
