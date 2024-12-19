@@ -168,6 +168,8 @@ public class ClienteResource {
             return Response.status(Status.NOT_FOUND).entity("Erro ao buscar perfil do cliente.").build();
         }
     }
+<<<<<<< HEAD
+=======
 
     // @PATCH
     // @Transactional
@@ -186,4 +188,5 @@ public class ClienteResource {
     //     LOG.info("buscando endereco");
     //     return Response.ok(clienteService.findEndereco(id)).build();
     // }
+>>>>>>> 5351f74900122ca746ffc37ea7b16d0de40ed34d
 }
