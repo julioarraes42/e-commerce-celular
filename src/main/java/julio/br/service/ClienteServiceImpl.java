@@ -187,7 +187,7 @@ public class ClienteServiceImpl implements ClienteService {
 
     @Override
     public void validarCPF(String cpf) {
-        if (cpf.length() != 11)
+        if (cpf.length() != 14)
             throw new ValidationException("cpf", "cpf invalido");
     }
 
