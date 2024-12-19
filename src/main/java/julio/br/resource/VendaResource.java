@@ -35,7 +35,7 @@ public class VendaResource {
     }
 
     @GET
-    @RolesAllowed("Funcionario")
+    @RolesAllowed("Cliente")
     @Path("/busca/cliente/{idCliente}")
     public Response findByCliente(@PathParam("idCliente") Long idCliente) {
         return Response.ok(vendaService.findByCliente(idCliente)).build();
